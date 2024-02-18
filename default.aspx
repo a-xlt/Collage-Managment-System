@@ -5,13 +5,13 @@ Inherits="Collage_Managment_System._default" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
-    <link rel="stylesheet" href="/lib/bootstrap.min.css" />
+    <link rel="stylesheet" href="../lib/bootstrap.min.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
       asp-append-version="true"
     />
-    <link rel="stylesheet" href="lib/site.css" />
+   <link rel="stylesheet" href="../lib/site.css" />
     <title>كلية تكنولوجيا المعلومات</title>
   </head>
   <body>
@@ -51,6 +51,6 @@ Inherits="Collage_Managment_System._default" %>
 
         </div>
       </div>
-    </form>
+   </form><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
