@@ -88,7 +88,7 @@
              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
                  <a class="dropdown-item" href="../Department/Add.aspx">اضافة قسم جديد </a>
                  <a class="dropdown-item" href="../Department/Delete.aspx">حذف معلومات قسم </a>
-                 <a class="dropdown-item" href="../Department/Show.aspx">عرض معلومات </a>
+                 <a class="dropdown-item" href="../Department/Show.aspx">عرض معلومات قسم</a>
 
                  <a class="dropdown-item" href="../Classroom/Add.aspx">اضافة معلومات قاعة دراسية </a>
                  <a class="dropdown-item" href="../Classroom/Delete.aspx">حذف معلومات قاعة دراسية قاعة</a>
@@ -119,6 +119,27 @@
 
     <form id="form1" runat="server">
         <div>
+             <asp:DropDownList ID="departmentDDL" runat="server" CssClass="form-select text-center" > </asp:DropDownList>
+            <br />
+            <asp:Button ID="searchBTN" runat="server" CssClass="btn w-100 btn-outline-primary" Text="عرض المعلومات" OnClick="searchBTN_Click" />
+
+            <hr />
+            <div class="row">
+                <div class="col-4 text-center" style="font-size:22px;">
+                    عدد الاساتذة 
+
+                <asp:Label ID="Label1" CssClass="text-bg-dark bg-opacity-25 text-primary-emphasis" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="col-4 text-center" style="font-size:22px;">عدد الطلاب
+
+                    <asp:Label ID="Label2" CssClass="text-bg-dark bg-opacity-25 text-primary-emphasis" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="col-4 text-center" style="font-size:22px;">عدد المواد الدراسية
+
+                    <asp:Label ID="Label3" CssClass="text-bg-dark bg-opacity-25 text-primary-emphasis" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+
         </div>
    </form><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

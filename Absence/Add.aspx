@@ -88,7 +88,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
                     <a class="dropdown-item" href="../Department/Add.aspx">اضافة قسم جديد </a>
                     <a class="dropdown-item" href="../Department/Delete.aspx">حذف معلومات قسم </a>
-                    <a class="dropdown-item" href="../Department/Show.aspx">عرض معلومات </a>
+                    <a class="dropdown-item" href="../Department/Show.aspx">عرض معلومات قسم</a>
 
                     <a class="dropdown-item" href="../Classroom/Add.aspx">اضافة معلومات قاعة دراسية </a>
                     <a class="dropdown-item" href="../Classroom/Delete.aspx">حذف معلومات قاعة دراسية قاعة</a>

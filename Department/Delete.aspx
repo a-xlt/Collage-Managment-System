@@ -88,7 +88,7 @@
              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
                  <a class="dropdown-item" href="../Department/Add.aspx">اضافة قسم جديد </a>
                  <a class="dropdown-item" href="../Department/Delete.aspx">حذف معلومات قسم </a>
-                 <a class="dropdown-item" href="../Department/Show.aspx">عرض معلومات </a>
+                 <a class="dropdown-item" href="../Department/Show.aspx">عرض معلومات قسم</a>
 
                  <a class="dropdown-item" href="../Classroom/Add.aspx">اضافة معلومات قاعة دراسية </a>
                  <a class="dropdown-item" href="../Classroom/Delete.aspx">حذف معلومات قاعة دراسية قاعة</a>
@@ -120,9 +120,15 @@
     <form id="form1" runat="server">
         <div>
             
+            <h5 class="text-center text-danger">*
+                في حالة حذف قسم سيتم حذف كل ما يرتبط بيه من مواد دراسية و طلاب و اساتذة
+            </h5>
+
+            <br />
+            <br />
+            <br />
      <asp:DropDownList ID="departmentDDL" runat="server" CssClass="form-select text-center" AutoPostBack="true" >
        
-
      </asp:DropDownList>
             <br />
             <br />

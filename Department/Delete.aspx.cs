@@ -49,7 +49,12 @@ namespace Collage_Managment_System.Department
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "delete FROM Department where id = "+departmentDDL.SelectedValue;
+            command.CommandText = "delete from Classroom where Debid = "+ departmentDDL.SelectedValue + 
+                ";delete from Material where DebId="+ departmentDDL.SelectedValue + 
+                ";delete from Schedule where  DebId="+ departmentDDL.SelectedValue + 
+                ";delete from Student where  Deb="+ departmentDDL.SelectedValue + 
+                ";delete from Teacher where  Deb="+ departmentDDL.SelectedValue + 
+                "  ;delete FROM Department where id = " + departmentDDL.SelectedValue;
             int x= command.ExecuteNonQuery();
             if (x > 0)
             {
