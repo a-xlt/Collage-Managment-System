@@ -22,6 +22,7 @@ namespace Collage_Managment_System.Student
             command.Connection = con;
             command.CommandText = "SELECT * FROM Department";
             SqlDataReader reader = command.ExecuteReader();
+            debDDL.Items.Clear();
             while (reader.Read())
             {
                 ListItem listItem = new ListItem()
