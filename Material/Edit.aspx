@@ -115,11 +115,73 @@
  <br />
 
 
+      <form id="form1" runat="server">
+      <div>
+          <h1 class="alert alert-secondary bg-secondary text-center text-light ">تعديل بيانات مادة دراسية
+          </h1>
+      </div>
+        <div class=" mb-5 text-center">
+
+    <asp:Label ID="errorLB" runat="server" Text=""></asp:Label>
+
+</div>
+      <div class="container">
+          <div class="input-group mb-3">
+            <asp:DropDownList ID="debDDL" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="debDDL_TextChanged"></asp:DropDownList>
+            <asp:DropDownList ID="matDDL" CssClass="form-select" runat="server"></asp:DropDownList>
+             
+              <div class="input-group-prepend">
+                  <asp:Button ID="SearchBTN" CssClass="btn btn-primary" runat="server" Text="بحث" OnClick="SearchBTN_Click" />
+              </div>
+          </div>
+     
 
 
-    <form id="form1" runat="server">
-        <div>
-        </div>
-   </form><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+      <p>اسم المادة</p>
+      <asp:TextBox ID="matnameTXT" CssClass="form-control" runat="server"></asp:TextBox>
+
+      <hr />
+
+      <p>عدد الوحدات</p>
+
+      <asp:TextBox ID="unitNumberTXT" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+
+      <hr />
+
+
+      <p>مادة اساسية او ثانوية</p>
+         <asp:DropDownList ID="primaryOrSecoundryddl" CssClass="form-select" runat="server">
+             <asp:ListItem Value="0">اساسية</asp:ListItem>
+             <asp:ListItem Value="1">ثانوية</asp:ListItem>
+         </asp:DropDownList>      
+          <hr />
+
+
+
+      <p>المرحلة</p>
+      <asp:DropDownList ID="stageddl" CssClass="form-select" runat="server">
+          <asp:ListItem Value="1">الاولى</asp:ListItem>
+          <asp:ListItem Value="2">الثانية</asp:ListItem>
+          <asp:ListItem Value="3">الثالثة</asp:ListItem>
+          <asp:ListItem Value="4">الرابعة</asp:ListItem>
+      </asp:DropDownList>
+
+      <hr />
+
+
+
+      <asp:Button ID="saveBTN" runat="server" CssClass="btn btn-outline-success w-100  text-center " Text="حفظ التعديلات " OnClick="saveBTN_Click" />
+
+
+    
+           </div>
+
+  </form>
+
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

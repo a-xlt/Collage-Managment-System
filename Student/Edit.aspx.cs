@@ -14,7 +14,7 @@ namespace Collage_Managment_System.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void saveBTN_Click(object sender, EventArgs e)
