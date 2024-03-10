@@ -33,7 +33,7 @@
                     <a class="dropdown-item" href="../Student/Search.aspx">البحث عن طالب </a>
                     <a class="dropdown-item" href="../Student/Delete.aspx">حذف معلومات طالب</a>
                     <a class="dropdown-item" href="../Student/Edit.aspx">تعديل معلومات طالب</a>
-                    <a class="dropdown-item" href="../Student/AdvanceSearch.aspx">البحث المتقدم</a>
+
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                     <a class="dropdown-item" href="../Teacher/Search.aspx">البحث عن استاذ </a>
                     <a class="dropdown-item" href="../Teacher/Delete.aspx">حذف معلومات استاذ</a>
                     <a class="dropdown-item" href="../Teacher/Edit.aspx">تعديل معلومات استاذ</a>
-                    <a class="dropdown-item" href="../Teacher/AdvanceSearch.aspx">البحث المتقدم</a>
+ 
                 </div>
             </div>
         </div>

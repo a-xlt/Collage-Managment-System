@@ -14,26 +14,37 @@ namespace Collage_Managment_System.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-            con.Open();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.Connection = con;
-            command.CommandText = "SELECT * FROM Department";
-            SqlDataReader reader = command.ExecuteReader();
-            debDDL.Items.Clear();
-            while (reader.Read())
+            if (!IsPostBack)
             {
-                ListItem listItem = new ListItem()
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "SELECT * FROM Department";
+                SqlDataReader reader = command.ExecuteReader();
+                debDDL.Items.Clear();
+                ListItem listItem1 = new ListItem()
                 {
-                    Value = reader[0].ToString(),
+                    Value = "-1",
 
-                    Text = reader[1].ToString()
+                    Text = "اختر القسم",
+                    Selected = true,
                 };
+                debDDL.Items.Add(listItem1);
+                while (reader.Read())
+                {
+                    ListItem listItem = new ListItem()
+                    {
+                        Value = reader[0].ToString(),
+
+                        Text = reader[1].ToString()
+                    };
 
 
-                debDDL.Items.Add(listItem);
+                    debDDL.Items.Add(listItem);
+                }
             }
         }
 
