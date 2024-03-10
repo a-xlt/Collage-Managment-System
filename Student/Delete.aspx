@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <asp:DropDownList ID="StudentDDL" runat="server" CssClass="form-select text-center" AutoPostBack="true">
+            <asp:DropDownList ID="StudentDDL" runat="server" CssClass="form-select text-center" >
             </asp:DropDownList>
             <br />
             <br />

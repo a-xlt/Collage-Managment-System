@@ -46,8 +46,10 @@ namespace Collage_Managment_System.Student
             command.Connection = con;
             command.CommandText = "SELECT Id , Name FROM Student Where Id= "+idSearch.Text;
             SqlDataReader reader = command.ExecuteReader();
+            
             if (reader.Read())
             {
+                    StudentDDL.Items.Clear();
                 ListItem listItem = new ListItem()
                 {
                     Value = reader[0].ToString(),

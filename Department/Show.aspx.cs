@@ -14,27 +14,39 @@ namespace Collage_Managment_System.Department
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-            con.Open();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.Connection = con;
-            command.CommandText = "SELECT * FROM Department";
-            SqlDataReader reader = command.ExecuteReader();
-            departmentDDL.Items.Clear();
-
-            while (reader.Read())
+            if (!IsPostBack)
             {
-                ListItem listItem = new ListItem()
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "SELECT * FROM Department";
+                SqlDataReader reader = command.ExecuteReader();
+                departmentDDL.Items.Clear();
+
+                ListItem listItem1 = new ListItem()
                 {
-                    Value = reader[0].ToString(),
+                    Value = "-1",
 
-                    Text = reader[1].ToString()
+                    Text = "اختر القسم",
+                    Selected = true,
                 };
+                departmentDDL.Items.Add(listItem1);
+
+                while (reader.Read())
+                {
+                    ListItem listItem = new ListItem()
+                    {
+                        Value = reader[0].ToString(),
+
+                        Text = reader[1].ToString()
+                    };
 
 
-                departmentDDL.Items.Add(listItem);
+                    departmentDDL.Items.Add(listItem);
+                }
             }
 
         }
@@ -62,22 +74,23 @@ namespace Collage_Managment_System.Department
             }
             else
                 Label1.Text = "0";
+            
             reader.Close();
 
 
             command.CommandText = "SELECT * FROM Student  where Deb=" + departmentDDL.SelectedValue;
             reader = command.ExecuteReader();
 
-            x = 0;
+            var y  = 0;
             if (reader.Read())
             {
-                x++;
+                y++;
 
                 while (reader.Read())
                 {
-                    x++;
+                    y++;
                 }
-                Label2.Text = x.ToString();
+                Label2.Text = y.ToString();
             }
             else
                 Label2.Text = "0";
@@ -85,23 +98,42 @@ namespace Collage_Managment_System.Department
             reader.Close();
 
 
-
-            command.CommandText = "SELECT * FROM Material where DebId=" + departmentDDL.SelectedValue;
+            command.CommandText = "SELECT * FROM Material where DebId = " + departmentDDL.SelectedValue;
             reader = command.ExecuteReader();
 
-            x = 0;
+            var z  = 0;
             if (reader.Read())
             {
-                x++;
+                z++;
 
                 while (reader.Read())
                 {
-                    x++;
+                   z++;
                 }
-                Label3.Text = x.ToString();
+                Label3.Text = z.ToString();
             }
             else
                 Label3.Text = "0";
+
+
+            reader.Close();
+
+             command.CommandText = "SELECT * FROM Classroom where DebID = " + departmentDDL.SelectedValue;
+            reader = command.ExecuteReader();
+
+            var c  = 0;
+            if (reader.Read())
+            {
+                c++;
+
+                while (reader.Read())
+                {
+                   c++;
+                }
+                Label4.Text = c.ToString();
+            }
+            else
+                Label4.Text = "0";
 
 
             reader.Close();
