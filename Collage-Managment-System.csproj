@@ -90,13 +90,11 @@
     <Content Include="Sch\Show.aspx" />
     <Content Include="Student\Add.aspx" />
     <Content Include="Student\AddDegree.aspx" />
-    <Content Include="Student\AdvanceSearch.aspx" />
     <Content Include="Student\Delete.aspx" />
     <Content Include="Student\Edit.aspx" />
     <Content Include="Student\EditDegree.aspx" />
     <Content Include="Student\Search.aspx" />
     <Content Include="Teacher\Add.aspx" />
-    <Content Include="Teacher\AdvanceSearch.aspx" />
     <Content Include="Teacher\Delete.aspx" />
     <Content Include="Teacher\Edit.aspx" />
     <Content Include="Teacher\Search.aspx" />
@@ -254,13 +252,6 @@
     <Compile Include="Student\AddDegree.aspx.designer.cs">
       <DependentUpon>AddDegree.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Student\AdvanceSearch.aspx.cs">
-      <DependentUpon>AdvanceSearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Student\AdvanceSearch.aspx.designer.cs">
-      <DependentUpon>AdvanceSearch.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Student\Delete.aspx.cs">
       <DependentUpon>Delete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -295,13 +286,6 @@
     </Compile>
     <Compile Include="Teacher\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Teacher\AdvanceSearch.aspx.cs">
-      <DependentUpon>AdvanceSearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Teacher\AdvanceSearch.aspx.designer.cs">
-      <DependentUpon>AdvanceSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher\Delete.aspx.cs">
       <DependentUpon>Delete.aspx</DependentUpon>

@@ -118,8 +118,31 @@
 
 
     <form id="form1" runat="server">
-        <div>
-        </div>
+         <div class="container">
+
+     <p>القسم</p>
+     <asp:DropDownList ID="debDDL" CssClass="form-select" runat="server"></asp:DropDownList>
+     <div class="input-group-prepend">
+         <asp:Button ID="searchBTN" CssClass="w-100 btn btn-outline-primary m-1" runat="server" OnClick="searchBTN_Click" Text="بحث" />
+
+     </div>
+     <hr />
+     <p>المادة الدراسية</p>
+
+     <asp:DropDownList ID="matddl" CssClass="form-control focus-ring focus-ring-success m-1" runat="server"></asp:DropDownList>
+     <div class="input-group-prepend">
+         <asp:Button ID="deleteBTN" CssClass="w-100 btn btn-outline-danger m-1" runat="server" OnClick="deleteBTN_Click" Text="حذف" />
+
+     </div>
+
+     <div class="container-fluid mt-5 text-center">
+
+         <asp:Label ID="errorLB" runat="server" Text=""></asp:Label>
+
+     </div>
+
+
+ </div>
    </form><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
