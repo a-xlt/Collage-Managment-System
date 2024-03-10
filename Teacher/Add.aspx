@@ -147,12 +147,7 @@
 
         <hr />
 
-        <p>المرحلة</p>
-        <asp:TextBox ID="stageTXT" CssClass="form-control" TextMode="Number" max="4" min="1" runat="server"></asp:TextBox>
-        <hr />
-
-
-
+        
         <p>الجنس</p>
         <asp:DropDownList ID="genderDDL" CssClass="form-select" runat="server">
             <asp:ListItem Value="male">ذكر</asp:ListItem>

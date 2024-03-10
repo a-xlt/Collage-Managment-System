@@ -118,8 +118,73 @@
 
 
     <form id="form1" runat="server">
-        <div>
-        </div>
+            <div>
+          <h1 class="alert alert-secondary bg-secondary text-center text-light ">تعديل بيانات استاذ
+          </h1>
+      </div>
+        <div class=" mb-5 text-center">
+
+    <asp:Label ID="errorLB" runat="server" Text=""></asp:Label>
+
+</div>
+      <div class="container">
+          <div class="input-group mb-3">
+              <asp:TextBox ID="idSearch" CssClass="focus-ring focus-ring-danger w-50 form-control" placeholder="ID الاستاذ " runat="server"></asp:TextBox>
+              <div class="input-group-prepend">
+                  <asp:Button ID="SearchBTN" CssClass="btn btn-primary" runat="server" Text="بحث" OnClick="SearchBTN_Click" />
+              </div>
+          </div>
+     
+
+
+
+
+
+      <p>اسم الاستاذ</p>
+      <asp:TextBox ID="teachrNameTXT" CssClass="form-control" runat="server"></asp:TextBox>
+
+      <hr />
+
+      <p>تاريح ميلاد الاستاذ</p>
+
+      <asp:TextBox ID="TaecherbirthdayTXT" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
+
+      <hr />
+
+
+
+      <p>الجنس</p>
+      <asp:DropDownList ID="genderDDL" CssClass="form-select" runat="server">
+          <asp:ListItem Value="male">ذكر</asp:ListItem>
+          <asp:ListItem Value="female">انثى</asp:ListItem>
+      </asp:DropDownList>
+
+      <hr />
+
+
+      <p>رقم موبايل الاستاذ</p>
+      <asp:TextBox ID="phoneXT" CssClass="form-control" TextMode="Phone" runat="server"></asp:TextBox>
+      <hr />
+
+           <p>المادة الدراسية</p>
+      <asp:DropDownList ID="materialddl" CssClass="form-select" runat="server"></asp:DropDownList>
+
+
+      <hr />
+
+           <p>التخصص الدقيق</p>
+      <asp:TextBox ID="specTXT" CssClass="form-control" TextMode="Phone" runat="server"></asp:TextBox>
+      <hr />
+
+
+
+
+      <asp:Button ID="saveBTN" runat="server" CssClass="btn btn-outline-success w-100  text-center " Text="حفظ التعديلات " OnClick="saveBTN_Click" />
+
+
+    
+           </div>
+
    </form><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

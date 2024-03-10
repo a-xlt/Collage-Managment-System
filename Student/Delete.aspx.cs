@@ -30,7 +30,7 @@ namespace Collage_Managment_System.Student
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
-                errorLB.Text = "تم حذف الطالب ";
+                errorLB.Text = "تم حذف الاستاذ ";
                 errorLB.Visible = true;
                 errorLB.CssClass = "alert alert-success h3";
             }

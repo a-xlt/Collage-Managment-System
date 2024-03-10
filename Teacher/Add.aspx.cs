@@ -57,7 +57,7 @@ namespace Collage_Managment_System.Teacher
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Teacher Values(N'" + teacherNameTXT.Text + "' , N'" + TeacherbirthdayTXT.Text + "' , " + debDDL.SelectedValue + " ,N'"+phoneTXT.Text+"' , N'" + genderDDL.SelectedValue + "' ,N'" + metrialddl.SelectedValue +"' ,N'"+SpecTXT.Text+"')";
+            command.CommandText = "INSERT INTO Teacher Values(N'" + teacherNameTXT.Text + "' , N'" + TeacherbirthdayTXT.Text + "' , " + debDDL.SelectedValue + " , N'" + genderDDL.SelectedValue + "',N'"+phoneTXT.Text+"' , N'" + metrialddl.SelectedValue +"' ,N'"+SpecTXT.Text+"')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {

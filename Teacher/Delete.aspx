@@ -118,10 +118,31 @@
 
 
     <form id="form1" runat="server">
-        <div>
+                <div>
+            <h1 class="alert alert-secondary bg-secondary text-center text-light ">حذف بيانات استاذ
+</h1>
 
+            <div class="container">
+                <div class="input-group mb-3">
+                    <asp:TextBox ID="idSearch" CssClass="focus-ring focus-ring-danger w-50 form-control" placeholder="ID الاستاذ " runat="server"></asp:TextBox>
+                    <div class="input-group-prepend">
+                        <asp:Button ID="SearchBTN" CssClass="btn btn-primary" runat="server" Text="بحث" OnClick="SearchBTN_Click" />
+                    </div>
+                </div>
+            </div>
 
+            <asp:DropDownList ID="TeacherDDL" runat="server" CssClass="form-select text-center" >
+            </asp:DropDownList>
+            <br />
+            <br />
+            <asp:Button ID="DeleteBTN" runat="server" CssClass="btn btn-outline-danger w-100" Text="حذف الاستاذ " OnClick="DeleteBTN_Click" />
+            <br />
 
+            <div class="container-fluid mt-5 text-center">
+
+                <asp:Label ID="errorLB" runat="server" Text=""></asp:Label>
+
+            </div>
         </div>
    </form><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
