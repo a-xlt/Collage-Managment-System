@@ -119,6 +119,51 @@
 
     <form id="form1" runat="server">
         <div>
+
+                    <h1 class="alert alert-secondary bg-secondary text-center text-light ">عرض القاعات الدراسية
+</h1>
+<hr />
+      <div>
+           <asp:DropDownList ID="departmentDDL" style="font-size:22px;" runat="server" CssClass="form-select text-center" AutoPostBack="true" OnTextChanged="departmentDDL_TextChanged"> </asp:DropDownList>
+          <br />
+
+
+          <div class="row">
+              <div class="col-3 text-center fw-bold" style="font-size:26px;">اسم المادة</div>
+              <div class="col-3 text-center fw-bold" style="font-size:26px;">عدد الوحدات</div>
+              <div class="col-3 text-center fw-bold" style="font-size:26px;">المادة اساسية؟ </div>
+              <div class="col-3 text-center fw-bold" style="font-size:26px;">المرحلة</div>
+          </div>
+
+           <div class="row">
+              <div class="col-3 text-center " style="font-size:22px;">
+                  <pre id="Label1" runat="server" ></pre>
+
+              </div>
+
+              <div class="col-3 text-center " style="font-size:22px;">
+                  <pre id="Label2" runat="server" ></pre>
+
+              </div>
+
+                <div class="col-3 text-center " style="font-size:22px;">
+                  <pre id="Label3" runat="server" ></pre>
+
+              </div>
+
+              <div class="col-3 text-center " style="font-size:22px;">
+                  <pre id="Label4" runat="server" ></pre>
+
+              </div>
+
+
+
+
+              </div>
+
+          </div>
+
+
         </div>
    </form><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
