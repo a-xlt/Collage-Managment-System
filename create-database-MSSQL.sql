@@ -1,4 +1,5 @@
 ﻿Create database [Collage-Managment-System];
+ALTER DATABASE [Collage-Managment-System] COLLATE Arabic_100_CI_AI
 Go
 
 use [Collage-Managment-System];
