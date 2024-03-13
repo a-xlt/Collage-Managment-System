@@ -83,7 +83,7 @@ namespace Collage_Managment_System.Teacher
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "Update Teacher Set [Name]=N'" + teachrNameTXT.Text + "' , Birthdate=N'" + TaecherbirthdayTXT.Text + "' Gender =N'" + genderDDL.SelectedValue + "' , Phone_Number=N'" + phoneXT.Text + "' ,[Metrial]='"+materialddl.SelectedValue+"' ,[spec]='"+specTXT.Text+"'   where id = " + idSearch.Text;
+            command.CommandText = "Update Teacher Set [Name]=N'" + teachrNameTXT.Text + "' , Birthdate=N'" + TaecherbirthdayTXT.Text + "', Gender =N'" + genderDDL.SelectedValue + "' , Phone_Number=N'" + phoneXT.Text + "' ,[Metrial]='"+materialddl.SelectedValue+"' ,[spec]='"+specTXT.Text+"'   where id = " + idSearch.Text;
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
