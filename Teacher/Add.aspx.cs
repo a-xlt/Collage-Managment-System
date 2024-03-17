@@ -54,10 +54,26 @@ namespace Collage_Managment_System.Teacher
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             con.Open();
+
+            SqlCommand command2 = new SqlCommand();
+            command2.CommandType = CommandType.Text;
+            command2.Connection = con;
+            command2.CommandText = "select Id from Student";
+            SqlDataReader sqlDataReader = command2.ExecuteReader();
+            int id_str;
+            if (sqlDataReader.Read())
+                id_str = Convert.ToInt32(sqlDataReader[0]);
+
+            else
+                id_str = 0;
+            sqlDataReader.Close();
+
+            id_str += 1;
+
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Teacher Values(N'" + teacherNameTXT.Text + "' , N'" + TeacherbirthdayTXT.Text + "' , " + debDDL.SelectedValue + " , N'" + genderDDL.SelectedValue + "',N'"+phoneTXT.Text+"' , N'" + metrialddl.SelectedValue +"' ,N'"+SpecTXT.Text+"')";
+            command.CommandText = "INSERT INTO Teacher Values(N'964-010-"+debDDL.SelectedValue+"-"+id_str.ToString()+"',,N'" + teacherNameTXT.Text + "' , N'" + TeacherbirthdayTXT.Text + "' , " + debDDL.SelectedValue + " , N'" + genderDDL.SelectedValue + "',N'"+phoneTXT.Text+"' , N'" + metrialddl.SelectedValue +"' ,N'"+SpecTXT.Text+"')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {

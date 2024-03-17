@@ -25,7 +25,7 @@ namespace Collage_Managment_System.Teacher
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "SELECT Id , Name FROM Teacher Where Id= " + idSearch.Text;
+            command.CommandText = "select Id , Name from  Teacher where Id_str ='" + idSearch.Text.Trim() + "'";
             SqlDataReader reader = command.ExecuteReader();
 
             if (reader.Read())

@@ -49,7 +49,7 @@ namespace Collage_Managment_System.Student
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "SELECT * FROM Student where id= "+idSearch.Text.Trim();
+            command.CommandText = "select * from  Student where Id_str ='" + idSearch.Text.Trim()+"'";
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {

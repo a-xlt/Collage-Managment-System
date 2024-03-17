@@ -12,24 +12,27 @@ Id int primary key not null identity(1,1),
 )
 
 Create table Student (
-Id int not null primary key identity(1,1),
+	Id int not null primary key identity(1,1),
+	
 	[Name] nvarchar(max) not null ,
 	Birthdate nvarchar(max) not null ,
 	Deb INT FOREIGN KEY REFERENCES Department(Id),
 	Stage int not null,
 	Gender nvarchar(max) not null,
-	Phone_Number nvarchar(max) not null
+	Phone_Number nvarchar(max) not null,
+	Id_str nvarchar(max) not null
 ) 
 
 Create table Teacher(
-Id int not null primary key identity(1,1),
+	Id int not null primary key identity(1,1),
 [Name] nvarchar(max) not null ,
 Birthdate nvarchar(max) not null ,
-	Deb INT FOREIGN KEY REFERENCES Department(Id),
+Deb INT FOREIGN KEY REFERENCES Department(Id),
 Gender nvarchar(max) not null,
 Phone_Number nvarchar(max) not null,
 Metrial nvarchar(max) not null,
-spec nvarchar(max) not null
+spec nvarchar(max) not null,
+	Id_str nvarchar(max) not null
 )
 
 
@@ -71,7 +74,7 @@ create table Schedule(
 Id int not null primary key identity(1,1),
 [Time] nvarchar(max) not null,
 Stage int not null ,
-DebID int FOREIGN KEY REFERENCES Department(Id),
+DebID Int FOREIGN KEY REFERENCES Department(Id),
 ClassID int FOREIGN KEY REFERENCES Classroom(Id),
 MatID int FOREIGN KEY REFERENCES Material(Id),
 TeacherID int FOREIGN KEY REFERENCES Teacher(Id),

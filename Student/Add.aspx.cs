@@ -53,10 +53,26 @@ namespace Collage_Managment_System.Student
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             con.Open();
+
+            
+                SqlCommand command2 = new SqlCommand();
+                command2.CommandType = CommandType.Text;
+                command2.Connection = con;
+                command2.CommandText = "select Id from Student";
+                SqlDataReader sqlDataReader = command2.ExecuteReader();
+                int id_str;
+                if (sqlDataReader.Read())
+                     id_str = Convert.ToInt32(sqlDataReader[0]);
+                
+                else
+                    id_str=0;
+                sqlDataReader.Close();
+            
+            id_str += 1;
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Student Values(N'"+STUnameTXT.Text.Trim()+ "' , N'"+STUbirthdayTXT.Text+ "' ,"+debDDL.SelectedValue+" ,"+stageTXT.Text+", N'"+genderDDL.SelectedValue+"' , N'"+phoneXT.Text+"')";
+            command.CommandText = "INSERT INTO Student Values(N'"+STUnameTXT.Text.Trim()+ "' , N'"+STUbirthdayTXT.Text+ "' ,"+debDDL.SelectedValue+" ,"+stageTXT.Text+", N'"+genderDDL.SelectedValue+"' , N'"+phoneXT.Text+ "',N'964-010-"+debDDL.SelectedValue+"-"+id_str.ToString()+"')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {

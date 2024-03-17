@@ -26,7 +26,7 @@ namespace Collage_Managment_System.Teacher
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "SELECT * FROM Teacher where id= " + idSearch.Text.Trim();
+            command.CommandText = "select * from  Teacher where Id_str ='" + idSearch.Text.Trim() + "'";
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -36,14 +36,14 @@ namespace Collage_Managment_System.Teacher
                 genderDDL.SelectedValue = reader[4].ToString();
                 phoneXT.Text = reader[5].ToString();
                 specTXT.Text = reader[7].ToString();
-                
-                materialddl.Items.Clear();
-                materialddl.SelectedValue = reader[6].ToString();
-                
+
+
+              
                 SqlCommand command2 = new SqlCommand();
                 command2.CommandType = CommandType.Text;
                 command2.Connection = con;
                 command2.CommandText = "SELECT * FROM Material where DebId= " + reader[3].ToString();
+                var temp = reader[6].ToString();
                 reader.Close();
 
                 SqlDataReader reader2 = command2.ExecuteReader();
@@ -57,16 +57,18 @@ namespace Collage_Managment_System.Teacher
                     materialddl.Items.Add(listItem);
                 }
 
+                materialddl.SelectedValue = temp;
+
             }
             else
             {
-                teachrNameTXT.Text ="";
-                TaecherbirthdayTXT.Text ="";
-                genderDDL.SelectedValue ="";
-                phoneXT.Text ="";
-                materialddl.SelectedValue ="";
+                teachrNameTXT.Text =" ";
+                TaecherbirthdayTXT.Text =" ";
+                genderDDL.SelectedValue ="1";
+                phoneXT.Text =" ";
+                materialddl.SelectedValue ="1";
                 specTXT.Text ="";
-
+                
                 errorLB.Text = "لايوجد استاذ ";
                 errorLB.Visible = true;
                 errorLB.CssClass = "alert alert-danger h3";
