@@ -74,6 +74,7 @@
     <Content Include="Classroom\Add.aspx" />
     <Content Include="Classroom\Delete.aspx" />
     <Content Include="Classroom\Show.aspx" />
+    <Content Include="Cpanal.aspx" />
     <Content Include="default.aspx" />
     <Content Include="Department\Add.aspx" />
     <Content Include="Department\Delete.aspx" />
@@ -88,7 +89,6 @@
     <Content Include="Sch\Delete.aspx" />
     <Content Include="Sch\Edit.aspx" />
     <Content Include="Sch\Show.aspx" />
-    <Content Include="Student\Add.aspx" />
     <Content Include="Student\AddDegree.aspx" />
     <Content Include="Student\Delete.aspx" />
     <Content Include="Student\Edit.aspx" />
@@ -152,6 +152,13 @@
     </Compile>
     <Compile Include="Classroom\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cpanal.aspx.cs">
+      <DependentUpon>Cpanal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cpanal.aspx.designer.cs">
+      <DependentUpon>Cpanal.aspx</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -237,13 +244,6 @@
     </Compile>
     <Compile Include="Sch\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Student\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Student\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\AddDegree.aspx.cs">
       <DependentUpon>AddDegree.aspx</DependentUpon>
