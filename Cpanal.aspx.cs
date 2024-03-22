@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Common;
 
 namespace Collage_Managment_System
 {
@@ -16,7 +17,44 @@ namespace Collage_Managment_System
         {
             if (!IsPostBack)
             {
-                functionDDl.SelectedValue = "-1";  
+                functionDDl.SelectedValue = "-1";
+
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "SELECT * FROM Department";
+                SqlDataReader reader = command.ExecuteReader();
+                add_stu_deb.Items.Clear();
+                ListItem listItem1 = new ListItem()
+                {
+                    Value = "-1",
+
+                    Text = "اختر القسم",
+                    Selected = true,
+                };
+                add_stu_deb.Items.Add(listItem1);
+                show_stu_del_ddl.Items.Add(listItem1);
+                del_deb_ddl.Items.Add(listItem1);
+
+                while (reader.Read())
+                {
+                    ListItem listItem = new ListItem()
+                    {
+                        Value = reader[0].ToString(),
+
+                        Text = reader[1].ToString()
+                    };
+
+
+                    add_stu_deb.Items.Add(listItem);
+                    del_deb_ddl.Items.Add(listItem);
+                    show_stu_del_ddl.Items.Add(listItem);
+                }
+
+
             }
         }
 
@@ -90,8 +128,101 @@ namespace Collage_Managment_System
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
+                add_stu_errorLB.Visible = true;
+                add_stu_errorLB.Text = "تم اضافة طالب جديد : " + Add_stu_Name.Text;
+                add_stu_errorLB.CssClass = "alert alert-success ";
+            }
+            else
+            {
+                add_stu_errorLB.Visible = true;
+                add_stu_errorLB.Text = "حدث خطأ";
+                add_stu_errorLB.CssClass = "alert alert-danger ";
+            }
+        }
+
+        protected void del_stu_SearchBTN_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "select Id , Name from  Student where Id_str ='" + del_stu_idSearch.Text.Trim() + "' OR [Name] = %' " + del_stu_idSearch.Text.Trim() + " '%";
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                del_stu_DDL.Items.Clear();
+                ListItem listItem = new ListItem()
+                {
+                    Value = reader[0].ToString(),
+
+                    Text = reader[1].ToString()
+                };
+
+
+                del_stu_DDL.Items.Add(listItem);
+            }
+        }
+
+        protected void del_stu_BTN_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "delete FROM Student where id = " + del_stu_DDL.SelectedValue;
+            int x = command.ExecuteNonQuery();
+            if (x > 0)
+            {
+                del_stu_errorLB.Text = "تم حذف الطالب ";
+                del_stu_errorLB.Visible = true;
+                del_stu_errorLB.CssClass = "alert alert-success";
+            }
+        }
+
+        protected void del_deb_BTN_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "delete from Classroom where Debid = " + del_deb_ddl.SelectedValue +
+                ";delete from Material where DebId=" + del_deb_ddl.SelectedValue +
+                ";delete from Schedule where  DebId=" + del_deb_ddl.SelectedValue +
+                ";delete from Student where  Deb=" + del_deb_ddl.SelectedValue +
+                ";delete FROM Department where id = " + del_deb_ddl.SelectedValue;
+            int x = command.ExecuteNonQuery();
+            if (x > 0)
+            {
+                del_deb_errorLB.Text = "تم حذف القسم ";
+                del_deb_errorLB.Visible = true;
+                del_deb_errorLB.CssClass = "alert alert-success";
+            }
+
+        }
+
+        protected void deb_add_BTN_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "INSERT INTO Department VALUES(N'" + deb_add_name.Value + "')";
+            int x = command.ExecuteNonQuery();
+            con.Close();
+            if (x > 0)
+            {
                 errorLB.Visible = true;
-                errorLB.Text = "تم اضافة طالب جديد : " + Add_stu_Name.Text;
+                errorLB.Text = "تم اضافة قسم جديد : " + deb_add_name.Value;
                 errorLB.CssClass = "alert alert-success ";
             }
             else

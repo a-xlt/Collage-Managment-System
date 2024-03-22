@@ -42,6 +42,33 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function1;
 
         /// <summary>
+        /// deb_add_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText deb_add_name;
+
+        /// <summary>
+        /// deb_add_BTN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button deb_add_BTN;
+
+        /// <summary>
+        /// errorLB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorLB;
+
+        /// <summary>
         /// function2 control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,33 @@ namespace Collage_Managment_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function2;
+
+        /// <summary>
+        /// del_deb_ddl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList del_deb_ddl;
+
+        /// <summary>
+        /// del_deb_BTN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button del_deb_BTN;
+
+        /// <summary>
+        /// del_deb_errorLB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label del_deb_errorLB;
 
         /// <summary>
         /// function3 control.
@@ -60,13 +114,13 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function3;
 
         /// <summary>
-        /// errorLB control.
+        /// add_stu_errorLB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorLB;
+        protected global::System.Web.UI.WebControls.Label add_stu_errorLB;
 
         /// <summary>
         /// Add_stu_Name control.
@@ -141,6 +195,33 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function4;
 
         /// <summary>
+        /// show_stu_del_ddl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_stu_del_ddl;
+
+        /// <summary>
+        /// Student_show_DG control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Student_show_DG;
+
+        /// <summary>
+        /// Student_Show_DG_DataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Student_Show_DG_DataSource;
+
+        /// <summary>
         /// function5 control.
         /// </summary>
         /// <remarks>
@@ -148,6 +229,51 @@ namespace Collage_Managment_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function5;
+
+        /// <summary>
+        /// del_stu_errorLB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label del_stu_errorLB;
+
+        /// <summary>
+        /// del_stu_idSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox del_stu_idSearch;
+
+        /// <summary>
+        /// del_stu_SearchBTN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button del_stu_SearchBTN;
+
+        /// <summary>
+        /// del_stu_DDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList del_stu_DDL;
+
+        /// <summary>
+        /// del_stu_BTN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button del_stu_BTN;
 
         /// <summary>
         /// function6 control.
