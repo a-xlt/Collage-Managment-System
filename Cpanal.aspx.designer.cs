@@ -60,13 +60,13 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.Button deb_add_BTN;
 
         /// <summary>
-        /// errorLB control.
+        /// deb_add_errorLB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorLB;
+        protected global::System.Web.UI.WebControls.Label deb_add_errorLB;
 
         /// <summary>
         /// function2 control.
@@ -285,6 +285,78 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function6;
 
         /// <summary>
+        /// add_mat_error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label add_mat_error;
+
+        /// <summary>
+        /// add_mat_Name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_mat_Name;
+
+        /// <summary>
+        /// add_mat_deb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_mat_deb;
+
+        /// <summary>
+        /// add_mat_stage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_mat_stage;
+
+        /// <summary>
+        /// add_mat_UnitNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_mat_UnitNumber;
+
+        /// <summary>
+        /// add_mat_th control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_mat_th;
+
+        /// <summary>
+        /// add_mat_lab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_mat_lab;
+
+        /// <summary>
+        /// add_mat_save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button add_mat_save;
+
+        /// <summary>
         /// function7 control.
         /// </summary>
         /// <remarks>
@@ -294,6 +366,51 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function7;
 
         /// <summary>
+        /// mat_del_errorLB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label mat_del_errorLB;
+
+        /// <summary>
+        /// mat_del_deb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList mat_del_deb;
+
+        /// <summary>
+        /// mat_del_search control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button mat_del_search;
+
+        /// <summary>
+        /// mat_del_ddl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList mat_del_ddl;
+
+        /// <summary>
+        /// mat_del_delete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button mat_del_delete;
+
+        /// <summary>
         /// function8 control.
         /// </summary>
         /// <remarks>
@@ -301,6 +418,33 @@ namespace Collage_Managment_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function8;
+
+        /// <summary>
+        /// show_mat_deb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_mat_deb;
+
+        /// <summary>
+        /// show_mat_dg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView show_mat_dg;
+
+        /// <summary>
+        /// show_mat_DG_DataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource show_mat_DG_DataSource;
 
         /// <summary>
         /// function9 control.

@@ -38,6 +38,9 @@ namespace Collage_Managment_System
                 add_stu_deb.Items.Add(listItem1);
                 show_stu_del_ddl.Items.Add(listItem1);
                 del_deb_ddl.Items.Add(listItem1);
+                add_mat_deb.Items.Add(listItem1);
+                mat_del_deb.Items.Add(listItem1);
+                show_mat_deb.Items.Add(listItem1);
 
                 while (reader.Read())
                 {
@@ -52,6 +55,9 @@ namespace Collage_Managment_System
                     add_stu_deb.Items.Add(listItem);
                     del_deb_ddl.Items.Add(listItem);
                     show_stu_del_ddl.Items.Add(listItem);
+                    add_mat_deb.Items.Add(listItem);
+                    mat_del_deb.Items.Add(listItem);
+                    show_mat_deb.Items.Add(listItem);
                 }
 
 
@@ -221,15 +227,88 @@ namespace Collage_Managment_System
             con.Close();
             if (x > 0)
             {
-                errorLB.Visible = true;
-                errorLB.Text = "تم اضافة قسم جديد : " + deb_add_name.Value;
-                errorLB.CssClass = "alert alert-success ";
+                deb_add_errorLB.Visible = true;
+                deb_add_errorLB.Text = "تم اضافة قسم جديد : " + deb_add_name.Value;
+                deb_add_errorLB.CssClass = "alert alert-success ";
             }
             else
             {
-                errorLB.Visible = true;
-                errorLB.Text = "حدث خطأ";
-                errorLB.CssClass = "alert alert-danger ";
+                deb_add_errorLB.Visible = true;
+                deb_add_errorLB.Text = "حدث خطأ";
+                deb_add_errorLB.CssClass = "alert alert-danger ";
+            }
+        }
+
+        protected void add_mat_save_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "INSERT INTO Material Values(N'" + add_mat_Name.Text.Trim() + "' ," + add_mat_UnitNumber.Text.Trim() + " ," + add_mat_th.Text.Trim() + " , " + add_mat_lab.Text.Trim() + ", "+ add_mat_stage.Text.Trim() + " , " + add_mat_deb.SelectedValue + " )";
+            int x = command.ExecuteNonQuery();
+            if (x > 0)
+            {
+                add_mat_error.Visible = true;
+                add_mat_error.Text = "تم اضافة مادة جديدة : " + add_mat_Name.Text;
+                add_mat_error.CssClass = "alert alert-success ";
+            }
+            else
+            {
+                add_mat_error.Visible = true;
+                add_mat_error.Text = "حدث خطأ";
+                add_mat_error.CssClass = "alert alert-danger ";
+            }
+        }
+
+        protected void mat_del_search_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "SELECT * FROM Material where DebId = " + mat_del_deb.SelectedValue;
+            SqlDataReader reader = command.ExecuteReader();
+            mat_del_ddl.Items.Clear();
+            while (reader.Read())
+            {
+                ListItem listItem = new ListItem()
+                {
+                    Value = reader[0].ToString(),
+
+                    Text = reader[1].ToString()
+                };
+
+
+                mat_del_ddl.Items.Add(listItem);
+            }
+        }
+
+        protected void mat_del_delete_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "delete from Material where Id =" + mat_del_ddl.SelectedValue;
+            int x = command.ExecuteNonQuery();
+            if (x > 0)
+            {
+                mat_del_errorLB.Visible = true;
+                mat_del_errorLB.Text = "تم حذف المادة الدراسية  : " + mat_del_ddl.SelectedItem;
+                mat_del_errorLB.CssClass = "alert alert-success";
+            }
+            else
+            {
+                mat_del_errorLB.Visible = true;
+                mat_del_errorLB.Text = "حدث خطأ";
+                mat_del_errorLB.CssClass = "alert alert-danger ";
             }
         }
     }
