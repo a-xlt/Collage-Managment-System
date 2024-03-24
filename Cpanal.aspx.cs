@@ -205,7 +205,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "delete from Classroom where Debid = " + del_deb_ddl.SelectedValue +
+            command.CommandText = 
                 ";delete from Material where DebId=" + del_deb_ddl.SelectedValue +
                 ";delete from Schedule where  DebId=" + del_deb_ddl.SelectedValue +
                 ";delete from Student where  Deb=" + del_deb_ddl.SelectedValue +
