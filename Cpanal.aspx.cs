@@ -27,7 +27,7 @@ namespace Collage_Managment_System
                 command.Connection = con;
                 command.CommandText = "SELECT * FROM Department";
                 SqlDataReader reader = command.ExecuteReader();
-                add_stu_deb.Items.Clear();
+
                 ListItem listItem1 = new ListItem()
                 {
                     Value = "-1",
@@ -41,6 +41,8 @@ namespace Collage_Managment_System
                 add_mat_deb.Items.Add(listItem1);
                 mat_del_deb.Items.Add(listItem1);
                 show_mat_deb.Items.Add(listItem1);
+                add_sch_deb.Items.Add(listItem1);
+                add_grade_deb.Items.Add(listItem1);
 
                 while (reader.Read())
                 {
@@ -58,6 +60,8 @@ namespace Collage_Managment_System
                     add_mat_deb.Items.Add(listItem);
                     mat_del_deb.Items.Add(listItem);
                     show_mat_deb.Items.Add(listItem);
+                    add_sch_deb.Items.Add(listItem);
+                    add_grade_deb.Items.Add(listItem);
                 }
 
 
@@ -66,7 +70,7 @@ namespace Collage_Managment_System
 
         protected void functionDDl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (functionDDl.SelectedValue=="-1")
+            if (functionDDl.SelectedValue == "-1")
             {
                 CollapaseAll();
             }
@@ -154,7 +158,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "select Id , Name from  Student where Id_str ='" + del_stu_idSearch.Text.Trim() + "' OR [Name] = %' " + del_stu_idSearch.Text.Trim() + " '%";
+            command.CommandText = "select Id , Name from  Student where Id_str ='" + del_stu_idSearch.Text.Trim() + "' OR [Name] = '% " + del_stu_idSearch.Text.Trim() + " %'";
             SqlDataReader reader = command.ExecuteReader();
 
             if (reader.Read())
@@ -247,7 +251,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Material Values(N'" + add_mat_Name.Text.Trim() + "' ," + add_mat_UnitNumber.Text.Trim() + " ," + add_mat_th.Text.Trim() + " , " + add_mat_lab.Text.Trim() + ", "+ add_mat_stage.Text.Trim() + " , " + add_mat_deb.SelectedValue + " )";
+            command.CommandText = "INSERT INTO Material Values(N'" + add_mat_Name.Text.Trim() + "' ," + add_mat_UnitNumber.Text.Trim() + " ," + add_mat_th.Text.Trim() + " , " + add_mat_lab.Text.Trim() + ", " + add_mat_stage.Text.Trim() + " , " + add_mat_deb.SelectedValue + " )";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
@@ -310,6 +314,63 @@ namespace Collage_Managment_System
                 mat_del_errorLB.Text = "حدث خطأ";
                 mat_del_errorLB.CssClass = "alert alert-danger ";
             }
+        }
+
+        protected void add_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (add_sch_deb.SelectedValue != "-1")
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "SELECT * FROM Material where DebId = " + add_sch_deb.SelectedValue + " AND Stage = " + add_sch_stage.SelectedValue;
+                SqlDataReader reader = command.ExecuteReader();
+                add_sch_mat.Items.Clear();
+                while (reader.Read())
+                {
+                    ListItem listItem = new ListItem()
+                    {
+                        Value = reader[0].ToString(),
+
+                        Text = reader[1].ToString()
+                    };
+
+
+                    add_sch_mat.Items.Add(listItem);
+                }
+            }
+        }
+
+        protected void add_sch_save_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "INSERT INTO Schedule Values(N'"+add_sch_from.Text.Trim()+"' , N'"+ add_sch_to.Text.Trim() + "',"+ add_sch_stage.SelectedValue + " , "+ add_sch_deb.SelectedValue+ " ,"+ add_sch_mat.SelectedValue+ " ,N'"+ add_sch_Teacher.Text.Trim() + "', N'"+ add_sch_note.Text.Trim() + "')";
+            int x = command.ExecuteNonQuery();
+            if (x > 0)
+            {
+                add_sch_error.Visible = true;
+                add_sch_error.Text = "تم اضافة جدول جديد : " ;
+                add_sch_error.CssClass = "alert alert-success ";
+            }
+            else
+            {
+                add_sch_error.Visible = true;
+                add_sch_error.Text = "حدث خطأ";
+                    add_sch_error.CssClass = "alert alert-danger ";
+            }
+        }
+
+        protected void add_grade_deb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

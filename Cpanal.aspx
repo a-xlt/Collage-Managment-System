@@ -17,21 +17,21 @@
     </style>
     <title>كلية تكنولوجيا المعلومات</title>
 </head>
-<body style="background-color:rgba(128, 128, 128,0.2)" >
+<body style="background-color: rgba(128, 128, 128,0.2)">
 
 
 
 
     <div class="container-fiud">
-        <form id="form1" runat="server" >
+        <form id="form1" runat="server">
 
 
-            <div class="border-1 border-opacity-25 mb-5 pb-3 p-3" style="background-color:rgba(128, 128, 128,0.4)">
-            <h1 class=" pt-3 pb-3 ">كلية تكنولوجيا المعلومات</h1>
-            <h3 align="center">اختر العملية المطلوبة</h3>
+            <div class="border-1 border-opacity-25 mb-5 pb-3 p-3" style="background-color: rgba(128, 128, 128,0.4)">
+                <h1 class=" pt-3 pb-3 ">كلية تكنولوجيا المعلومات</h1>
+                <h3 align="center">اختر العملية المطلوبة</h3>
 
 
-                <asp:DropDownList ID="functionDDl" style="background-color:rgba(128, 128, 128,0.2)" OnSelectedIndexChanged="functionDDl_SelectedIndexChanged" runat="server" CssClass="border border-1 border-dark form-select focus-ring focus-ring-danger text-center" AutoPostBack="true">
+                <asp:DropDownList ID="functionDDl" Style="background-color: rgba(128, 128, 128,0.2)" OnSelectedIndexChanged="functionDDl_SelectedIndexChanged" runat="server" CssClass="border border-1 border-dark form-select focus-ring focus-ring-danger text-center" AutoPostBack="true">
                     <asp:ListItem Selected="True" Text="اختر العملية...." Value="-1">  </asp:ListItem>
                     <asp:ListItem Value="1"> إضافة قسم </asp:ListItem>
                     <asp:ListItem Value="2"> حذف قسم </asp:ListItem>
@@ -48,19 +48,6 @@
                 </asp:DropDownList>
             </div>
 
-
-         <%--   <div class="container-fluid">
-
-                <hr class="hr" />
-                <div class="container-fluid">
-                    <hr class="hr" />
-                    <div class="container-fluid">
-                        <hr class="hr" />
-                    </div>
-
-                </div>
-
-            </div>--%>
 
 
             <div class="container-fluid mb-5">
@@ -289,15 +276,15 @@
                     </div>
 
                     <p>القسم</p>
-                        <asp:DropDownList ID="mat_del_deb" CssClass="form-select " runat="server"></asp:DropDownList>
-                        <asp:Button ID="mat_del_search" CssClass="w-25 btn btn-outline-primary m-1" runat="server" OnClick="mat_del_search_Click" Text="بحث" />
+                    <asp:DropDownList ID="mat_del_deb" CssClass="form-select " runat="server"></asp:DropDownList>
+                    <asp:Button ID="mat_del_search" CssClass="w-25 btn btn-outline-primary m-1" runat="server" OnClick="mat_del_search_Click" Text="بحث" />
                     <hr />
                     <p>المادة الدراسية</p>
 
                     <asp:DropDownList ID="mat_del_ddl" CssClass="form-control focus-ring focus-ring-success m-1" runat="server"></asp:DropDownList>
-                    
-                        <asp:Button ID="mat_del_delete" CssClass="w-25 btn btn-outline-danger m-1" runat="server" OnClick="mat_del_delete_Click" Text="حذف" />
-                  
+
+                    <asp:Button ID="mat_del_delete" CssClass="w-25 btn btn-outline-danger m-1" runat="server" OnClick="mat_del_delete_Click" Text="حذف" />
+
                 </div>
                 <div runat="server" visible="false" id="function8">
 
@@ -336,17 +323,107 @@
 
                 </div>
                 <div runat="server" visible="false" id="function9">
+
+                    <div class="container-fluid mt-5 text-center">
+
+                        <asp:Label ID="add_sch_error" runat="server" Text=""></asp:Label>
+
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-text  bg-black text-white">القسم</span>
+
+                        <asp:DropDownList ID="add_sch_deb" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" runat="server"></asp:DropDownList>
+
+                        &nbsp;&nbsp;&nbsp;
+                        <span class="input-group-text  bg-black text-white">المرحلة</span>
+                        <asp:DropDownList ID="add_sch_stage" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" runat="server">
+                            <asp:ListItem Value="1">الاولى </asp:ListItem>
+                            <asp:ListItem Value="2">الثانية</asp:ListItem>
+                            <asp:ListItem Value="3"> الثالثة</asp:ListItem>
+                            <asp:ListItem Value="4">الرابعة</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                    <hr />
+                    <p>المادة</p>
+                    <asp:DropDownList ID="add_sch_mat" CssClass="form-select text-center" runat="server"></asp:DropDownList>
+                    <hr />
+
+
+
+                    <p>الوقت</p>
+                    <div class="input-group">
+                        <span class="input-group-text  bg-black text-white">من</span>
+                        <asp:TextBox ID="add_sch_from" TextMode="Time" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;&nbsp;
+
+                        <span class="input-group-text bg-black text-white">الى</span>
+                        <asp:TextBox ID="add_sch_to" TextMode="Time" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                    </div>
+
+                    <hr />
+
+                    <p>اسم الاستاذ</p>
+                    <div class="input-group">
+                        <asp:TextBox ID="add_sch_Teacher" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                    </div>
+
+                    <hr />
+
+                    <p>ملاحضات</p>
+                    <div class="input-group">
+                        <asp:TextBox ID="add_sch_note" TextMode="MultiLine" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                    </div>
+
+                    <hr />
+
+                    <asp:Button ID="add_sch_save" CssClass="w-100 btn btn-outline-success m-1" runat="server" OnClick="add_sch_save_Click" Text="حفظ" />
+
+
+
+
                 </div>
                 <div runat="server" visible="false" id="function10">
                 </div>
                 <div runat="server" visible="false" id="function11">
+
+                    <div class="input-group">
+                        <span class="input-group-text  bg-black text-white">القسم</span>
+
+                        <asp:DropDownList ID="add_grade_deb" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_grade_deb_SelectedIndexChanged" runat="server"></asp:DropDownList>
+
+                        &nbsp;&nbsp;&nbsp;
+                            <span class="input-group-text  bg-black text-white">المرحلة</span>
+                        <asp:DropDownList ID="DropDownList2" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="" runat="server">
+                            <asp:ListItem Value="1">الاولى </asp:ListItem>
+                            <asp:ListItem Value="2">الثانية</asp:ListItem>
+                            <asp:ListItem Value="3"> الثالثة</asp:ListItem>
+                            <asp:ListItem Value="4">الرابعة</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+
+
+
+
+
+                    <hr />
+                    <p>اسم الاستاذ</p>
+                    <div class="input-group">
+                        <asp:TextBox ID="TextBox1" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                    </div>
+
+                    <hr />
+
+
+
+
                 </div>
                 <div runat="server" visible="false" id="function12">
                 </div>
 
             </div>
-
-
         </form>
     </div>
 
