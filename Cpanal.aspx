@@ -301,8 +301,8 @@
                             <asp:BoundField DataField="Name" HeaderText="إسم المادة" SortExpression="Name" />
                             <asp:BoundField DataField="Unit_Numbers" HeaderText="عدد الوحدات " SortExpression="Unit_Numbers" />
                             <asp:BoundField DataField="Stage" HeaderText="المرحلة" SortExpression="Stage" />
-                            <asp:BoundField DataField="Th_hours" HeaderText="عدد الوحدات النظري" SortExpression="Th_hours" />
-                            <asp:BoundField DataField="Lab_hours" HeaderText="عدد الوحدات العملي" SortExpression="Lab_hours" />
+                            <asp:BoundField DataField="Th_hours" HeaderText="عدد الساعات النظري" SortExpression="Th_hours" />
+                            <asp:BoundField DataField="Lab_hours" HeaderText="عدد الساعات العملي" SortExpression="Lab_hours" />
                         </Columns>
 
 
