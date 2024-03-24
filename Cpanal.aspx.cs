@@ -43,6 +43,7 @@ namespace Collage_Managment_System
                 show_mat_deb.Items.Add(listItem1);
                 add_sch_deb.Items.Add(listItem1);
                 add_grade_deb.Items.Add(listItem1);
+                show_grade_deb.Items.Add(listItem1);
 
                 while (reader.Read())
                 {
@@ -61,6 +62,7 @@ namespace Collage_Managment_System
                     mat_del_deb.Items.Add(listItem);
                     show_mat_deb.Items.Add(listItem);
                     add_sch_deb.Items.Add(listItem);
+                    show_grade_deb.Items.Add(listItem);
                     add_grade_deb.Items.Add(listItem);
                 }
 
@@ -370,7 +372,106 @@ namespace Collage_Managment_System
 
         protected void add_grade_deb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (add_grade_deb.SelectedValue != "-1")
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "SELECT * FROM Student where Deb = " + add_grade_deb.SelectedValue + " AND Stage = " + add_grade_stage.SelectedValue;
+                SqlDataReader reader = command.ExecuteReader();
+                add_grade_student.Items.Clear();
+                add_grade_mat.Items.Clear();
 
+                while (reader.Read())
+                {
+                    ListItem listItem = new ListItem()
+                    {
+                        Value = reader[0].ToString(),
+
+                        Text = reader[1].ToString()
+                    };
+
+
+                    add_grade_student.Items.Add(listItem);
+                }
+                reader.Close();
+                command.CommandText = "SELECT * FROM Material where DebId = " + add_grade_deb.SelectedValue + " AND Stage = " + add_grade_stage.SelectedValue;
+                SqlDataReader reader2 = command.ExecuteReader();
+                add_grade_mat.Items.Clear();
+                while (reader2.Read())
+                {
+                    ListItem listItem = new ListItem()
+                    {
+                        Value = reader2[0].ToString(),
+
+                        Text = reader2[1].ToString()
+                    };
+
+
+                    add_grade_mat.Items.Add(listItem);
+                }
+
+            }
+
+            else
+            {
+                add_grade_student.Items.Clear();
+                add_grade_mat.Items.Clear();
+            }
+        }
+
+        protected void add_grade_save_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "INSERT INTO Grade Values("+ add_grade_grade.Text.Trim()+ " , "+ add_grade_student.SelectedValue+ " , "+ add_grade_mat.SelectedValue+ " )";
+            int x = command.ExecuteNonQuery();
+            if (x > 0)
+            {
+                add_grade_error.Visible = true;
+                add_grade_error.Text = "تم اضافة  درجة الطالب  ";
+                add_grade_error.CssClass = "alert alert-success ";
+            }
+            else
+            {
+                add_grade_error.Visible = true;
+                add_grade_error.Text = "حدث خطأ";
+                add_grade_error.CssClass = "alert alert-danger ";
+            }
+        }
+
+        protected void show_grade_deb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "SELECT * FROM Material where DebId = " + show_grade_deb.SelectedValue + " AND Stage = " + show_grade_stage.SelectedValue;
+            SqlDataReader reader = command.ExecuteReader();
+           
+           show_grade_mat.Items.Clear();
+
+            while (reader.Read())
+            {
+                ListItem listItem = new ListItem()
+                {
+                    Value = reader[0].ToString(),
+
+                    Text = reader[1].ToString()
+                };
+
+
+               show_grade_mat.Items.Add(listItem);
+            }
         }
     }
 }

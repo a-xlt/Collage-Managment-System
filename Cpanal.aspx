@@ -44,7 +44,7 @@
                     <asp:ListItem Value="9"> إضافة جدول لقسم </asp:ListItem>
                     <asp:ListItem Value="10"> عرض جداول قسم </asp:ListItem>
                     <asp:ListItem Value="11"> اضافة درجة طالب  </asp:ListItem>
-                    <asp:ListItem Value="12"> حذف درجة مادة  </asp:ListItem>
+                    <asp:ListItem Value="12"> عرض درجات لمادة  </asp:ListItem>
                 </asp:DropDownList>
             </div>
 
@@ -65,7 +65,7 @@
                     <asp:Button ID="deb_add_BTN" CssClass="btn btn-outline-success w-100" runat="server" Text="اضافة" OnClick="deb_add_BTN_Click" />
 
 
-                    <div class="container-fluid mt-5 text-center">
+                    <div class="container-fluid mt-5 text-center pb-5">
 
                         <asp:Label ID="deb_add_errorLB" runat="server" Text=""></asp:Label>
 
@@ -90,7 +90,7 @@
                         <asp:Button ID="del_deb_BTN" runat="server" CssClass="btn btn-outline-danger w-100" Text="حذف القسم " OnClick="del_deb_BTN_Click" />
                         <br />
 
-                        <div class="container-fluid mt-5 text-center">
+                        <div class="container-fluid mt-5 text-center pb-5">
 
                             <asp:Label ID="del_deb_errorLB" runat="server" Text=""></asp:Label>
 
@@ -101,7 +101,7 @@
                 </div>
                 <div runat="server" visible="false" id="function3">
 
-                    <div class="container-fluid mt-5 text-center">
+                    <div class="container-fluid mt-5 text-center pb-5">
 
                         <asp:Label ID="add_stu_errorLB" runat="server" Text=""></asp:Label>
 
@@ -215,7 +215,7 @@
 
                 </div>
                 <div runat="server" visible="false" id="function6">
-                    <div class="container-fluid mt-5 text-center">
+                    <div class="container-fluid mt-5 text-center pb-5">
 
                         <asp:Label ID="add_mat_error" runat="server" Text=""></asp:Label>
 
@@ -269,7 +269,7 @@
 
                 </div>
                 <div runat="server" visible="false" id="function7">
-                    <div class="container-fluid mt-5 text-center">
+                    <div class="container-fluid mt-5 text-center pb-5">
 
                         <asp:Label ID="mat_del_errorLB" runat="server" Text=""></asp:Label>
 
@@ -324,19 +324,20 @@
                 </div>
                 <div runat="server" visible="false" id="function9">
 
-                    <div class="container-fluid mt-5 text-center">
+                    <div class="container-fluid mt-5 text-center pb-5">
 
                         <asp:Label ID="add_sch_error" runat="server" Text=""></asp:Label>
 
                     </div>
+                    <br />
 
                     <div class="input-group">
-                        <span class="input-group-text  bg-black text-white">القسم</span>
+                        <span class="input-group-text  bg-dark-subtle text-primary">القسم</span>
 
                         <asp:DropDownList ID="add_sch_deb" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" runat="server"></asp:DropDownList>
 
                         &nbsp;&nbsp;&nbsp;
-                        <span class="input-group-text  bg-black text-white">المرحلة</span>
+                        <span class="input-group-text  bg-dark-subtle text-primary">المرحلة</span>
                         <asp:DropDownList ID="add_sch_stage" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" runat="server">
                             <asp:ListItem Value="1">الاولى </asp:ListItem>
                             <asp:ListItem Value="2">الثانية</asp:ListItem>
@@ -354,11 +355,11 @@
 
                     <p>الوقت</p>
                     <div class="input-group">
-                        <span class="input-group-text  bg-black text-white">من</span>
+                        <span class="input-group-text  bg-dark-subtle text-primary">من</span>
                         <asp:TextBox ID="add_sch_from" TextMode="Time" CssClass="form-control text-center" runat="server"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;
 
-                        <span class="input-group-text bg-black text-white">الى</span>
+                        <span class="input-group-text bg-dark-subtle text-primary">الى</span>
                         <asp:TextBox ID="add_sch_to" TextMode="Time" CssClass="form-control text-center" runat="server"></asp:TextBox>
                     </div>
 
@@ -388,14 +389,20 @@
                 </div>
                 <div runat="server" visible="false" id="function11">
 
+                    <div class="container-fluid mt-5 text-center pb-5">
+
+                        <asp:Label ID="add_grade_error" runat="server" Text=""></asp:Label>
+
+                    </div>
+
                     <div class="input-group">
-                        <span class="input-group-text  bg-black text-white">القسم</span>
+                        <span class="input-group-text  bg-dark-subtle text-primary">القسم</span>
 
                         <asp:DropDownList ID="add_grade_deb" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_grade_deb_SelectedIndexChanged" runat="server"></asp:DropDownList>
 
                         &nbsp;&nbsp;&nbsp;
-                            <span class="input-group-text  bg-black text-white">المرحلة</span>
-                        <asp:DropDownList ID="DropDownList2" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="" runat="server">
+                            <span class="input-group-text  bg-dark-subtle text-primary">المرحلة</span>
+                        <asp:DropDownList ID="add_grade_stage" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_grade_deb_SelectedIndexChanged" runat="server">
                             <asp:ListItem Value="1">الاولى </asp:ListItem>
                             <asp:ListItem Value="2">الثانية</asp:ListItem>
                             <asp:ListItem Value="3"> الثالثة</asp:ListItem>
@@ -405,22 +412,88 @@
                     </div>
 
 
-
-
-
                     <hr />
-                    <p>اسم الاستاذ</p>
+
                     <div class="input-group">
-                        <asp:TextBox ID="TextBox1" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                        <span class="input-group-text  bg-dark-subtle text-primary">الطالب</span>
+                        <asp:DropDownList ID="add_grade_student" CssClass="form-select text-center" runat="server"></asp:DropDownList>
+                        &nbsp;&nbsp;
+                       
+                        <span class="input-group-text  bg-dark-subtle text-primary">المادة</span>
+                        <asp:DropDownList ID="add_grade_mat" CssClass="form-select text-center" runat="server"></asp:DropDownList>
+                        &nbsp;&nbsp;
+                        
+                        <span class="input-group-text  bg-dark-subtle text-primary">الدرجة</span>
+                        <asp:TextBox ID="add_grade_grade" CssClass="form-control text-center" step="0.01" TextMode="Number" runat="server"></asp:TextBox>
                     </div>
 
                     <hr />
+                    <asp:Button ID="add_grade_save" CssClass="w-100 btn btn-outline-success m-1" runat="server" OnClick="add_grade_save_Click" Text="حفظ" />
+
 
 
 
 
                 </div>
+
                 <div runat="server" visible="false" id="function12">
+
+
+                    <div class="input-group">
+                        <span class="input-group-text  bg-dark-subtle text-primary">القسم</span>
+
+                        <asp:DropDownList ID="show_grade_deb" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="show_grade_deb_SelectedIndexChanged" runat="server"></asp:DropDownList>
+
+                        &nbsp;&nbsp;&nbsp;
+                            <span class="input-group-text  bg-dark-subtle text-primary">المرحلة</span>
+                        <asp:DropDownList ID="show_grade_stage" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="show_grade_deb_SelectedIndexChanged" runat="server">
+                            <asp:ListItem Value="1">الاولى </asp:ListItem>
+                            <asp:ListItem Value="2">الثانية</asp:ListItem>
+                            <asp:ListItem Value="3"> الثالثة</asp:ListItem>
+                            <asp:ListItem Value="4">الرابعة</asp:ListItem>
+                        </asp:DropDownList>
+                        <span class="input-group-text  bg-dark-subtle text-primary">المادة</span>
+                        <asp:DropDownList ID="show_grade_mat" CssClass="form-select text-center" AutoPostBack="true" runat="server">
+                        </asp:DropDownList>
+                    </div>
+                    <hr />
+
+                    <asp:GridView ID="GridView1" CssClass="w-100 text-center" runat="server" DataSourceID="show_degree_Datasource" AllowPaging="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AutoGenerateColumns="False">
+
+                        <Columns>
+
+                            <asp:BoundField DataField="Name" HeaderText="إسم الطالب" SortExpression="Name" />
+                            <asp:BoundField DataField="Grade" HeaderText="الدرجة " SortExpression="Grade" />
+
+                        </Columns>
+
+
+                        <FooterStyle BackColor="White" ForeColor="#000066"></FooterStyle>
+
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White"></HeaderStyle>
+
+                        <PagerStyle HorizontalAlign="Right" BackColor="White" ForeColor="#000066"></PagerStyle>
+
+                        <RowStyle ForeColor="#000066"></RowStyle>
+
+
+                    </asp:GridView>
+
+
+
+
+                    <asp:SqlDataSource runat="server" ID="show_degree_Datasource" ConnectionString='<%$ ConnectionStrings:con %>' SelectCommand="SELECT dbo.Student.Name, dbo.Grade.Grade
+FROM     dbo.Student INNER JOIN
+                  dbo.Grade ON dbo.Student.Id = dbo.Grade.StuID INNER JOIN
+                  dbo.Department ON dbo.Student.Deb = dbo.Department.Id INNER JOIN
+                  dbo.Material ON dbo.Grade.MetID = dbo.Material.Id AND dbo.Department.Id = dbo.Material.DebId
+WHERE  (dbo.Department.Id = @debid) AND (dbo.Student.Stage = @stageid) AND (dbo.Material.Id = @matid)">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="show_grade_deb" PropertyName="SelectedValue" DefaultValue="-1" Name="debId"></asp:ControlParameter>
+                            <asp:ControlParameter ControlID="show_grade_stage" PropertyName="SelectedValue" DefaultValue="-1" Name="stageid"></asp:ControlParameter>
+                            <asp:ControlParameter ControlID="show_grade_mat" PropertyName="SelectedValue" DefaultValue="-1" Name="matId"></asp:ControlParameter>
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </div>
 
             </div>

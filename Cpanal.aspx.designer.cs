@@ -555,6 +555,15 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function11;
 
         /// <summary>
+        /// add_grade_error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label add_grade_error;
+
+        /// <summary>
         /// add_grade_deb control.
         /// </summary>
         /// <remarks>
@@ -564,22 +573,49 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList add_grade_deb;
 
         /// <summary>
-        /// DropDownList2 control.
+        /// add_grade_stage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList add_grade_stage;
 
         /// <summary>
-        /// TextBox1 control.
+        /// add_grade_student control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.DropDownList add_grade_student;
+
+        /// <summary>
+        /// add_grade_mat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_grade_mat;
+
+        /// <summary>
+        /// add_grade_grade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_grade_grade;
+
+        /// <summary>
+        /// add_grade_save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button add_grade_save;
 
         /// <summary>
         /// function12 control.
@@ -589,5 +625,50 @@ namespace Collage_Managment_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function12;
+
+        /// <summary>
+        /// show_grade_deb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_grade_deb;
+
+        /// <summary>
+        /// show_grade_stage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_grade_stage;
+
+        /// <summary>
+        /// show_grade_mat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_grade_mat;
+
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+
+        /// <summary>
+        /// show_degree_Datasource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource show_degree_Datasource;
     }
 }
