@@ -483,58 +483,22 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList add_sch_stage;
 
         /// <summary>
-        /// add_sch_mat control.
+        /// add_sch_dayOrNight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList add_sch_mat;
+        protected global::System.Web.UI.WebControls.DropDownList add_sch_dayOrNight;
 
         /// <summary>
-        /// add_sch_day control.
+        /// add_sch_file control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList add_sch_day;
-
-        /// <summary>
-        /// add_sch_from control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox add_sch_from;
-
-        /// <summary>
-        /// add_sch_to control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox add_sch_to;
-
-        /// <summary>
-        /// add_sch_Teacher control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox add_sch_Teacher;
-
-        /// <summary>
-        /// add_sch_note control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox add_sch_note;
+        protected global::System.Web.UI.WebControls.FileUpload add_sch_file;
 
         /// <summary>
         /// add_sch_save control.
@@ -553,6 +517,42 @@ namespace Collage_Managment_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function10;
+
+        /// <summary>
+        /// show_sch_deb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_sch_deb;
+
+        /// <summary>
+        /// show_sch_stage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_sch_stage;
+
+        /// <summary>
+        /// show_sch_dayOrNight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList show_sch_dayOrNight;
+
+        /// <summary>
+        /// show_sch_file control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe show_sch_file;
 
         /// <summary>
         /// function11 control.

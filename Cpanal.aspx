@@ -27,7 +27,12 @@
 
 
             <div class="border-1 border-opacity-25 mb-5 pb-3 p-3" style="background-color: rgba(128, 128, 128,0.4)">
-                <h1 class=" pt-3 pb-3 ">كلية تكنولوجيا المعلومات</h1>
+                <h1 class=" pt-3 pb-3 ">
+                    <img src="https://it.uobabylon.edu.iq/media/images/logo.png" />
+
+                    كلية تكنولوجيا المعلومات
+
+                </h1>
                 <h3 align="center">اختر العملية المطلوبة</h3>
 
 
@@ -334,11 +339,11 @@
                     <div class="input-group">
                         <span class="input-group-text  bg-dark-subtle text-primary">القسم</span>
 
-                        <asp:DropDownList ID="add_sch_deb" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="add_sch_deb" CssClass="form-select text-center" runat="server"></asp:DropDownList>
 
                         &nbsp;&nbsp;&nbsp;
                         <span class="input-group-text  bg-dark-subtle text-primary">المرحلة</span>
-                        <asp:DropDownList ID="add_sch_stage" CssClass="form-select text-center" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" runat="server">
+                        <asp:DropDownList ID="add_sch_stage" CssClass="form-select text-center" runat="server">
                             <asp:ListItem Value="1">الاولى </asp:ListItem>
                             <asp:ListItem Value="2">الثانية</asp:ListItem>
                             <asp:ListItem Value="3"> الثالثة</asp:ListItem>
@@ -347,45 +352,20 @@
 
                     </div>
                     <hr />
-                    <p>المادة</p>
-                    <asp:DropDownList ID="add_sch_mat" CssClass="form-select text-center" runat="server"></asp:DropDownList>
-                    <hr />
-
-
-                    <p>اليوم</p>
-                    <asp:DropDownList ID="add_sch_day" CssClass="form-select text-center" runat="server">
-                        <asp:ListItem value="السبت">السبت</asp:ListItem>
-                        <asp:ListItem value="الأحد">الأحد</asp:ListItem>
-                        <asp:ListItem value="الإثنين">الإثنين</asp:ListItem>
-                        <asp:ListItem value="الثلاثاء">الثلاثاء</asp:ListItem>
-                        <asp:ListItem value="الأربعاء">الأربعاء</asp:ListItem>
-                        <asp:ListItem value="الخميس">الخميس</asp:ListItem>
-                    </asp:DropDownList>
-                    <hr />
-
-
-                    <p>الوقت</p>
                     <div class="input-group">
-                        <span class="input-group-text  bg-dark-subtle text-primary">من</span>
-                        <asp:TextBox ID="add_sch_from" TextMode="Time" CssClass="form-control text-center" runat="server"></asp:TextBox>
-                        &nbsp;&nbsp;&nbsp;
+                        <span class="input-group-text  bg-dark-subtle text-primary">المرحلة</span>
 
-                        <span class="input-group-text bg-dark-subtle text-primary">الى</span>
-                        <asp:TextBox ID="add_sch_to" TextMode="Time" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="add_sch_dayOrNight" CssClass="form-select" runat="server">
+                            <asp:ListItem Value="صباحي">صباحي </asp:ListItem>
+                            <asp:ListItem Value="مسائي">مسائي</asp:ListItem>
+                        </asp:DropDownList>
+
                     </div>
 
-                    <hr />
 
-                    <p>اسم الاستاذ</p>
+                    <p>ملف الجدول</p>
                     <div class="input-group">
-                        <asp:TextBox ID="add_sch_Teacher" CssClass="form-control text-center" runat="server"></asp:TextBox>
-                    </div>
-
-                    <hr />
-
-                    <p>ملاحضات</p>
-                    <div class="input-group">
-                        <asp:TextBox ID="add_sch_note" TextMode="MultiLine" CssClass="form-control text-center" runat="server"></asp:TextBox>
+                        <asp:FileUpload ID="add_sch_file" accept="application/pdf" CssClass="form-control" runat="server" />
                     </div>
 
                     <hr />
@@ -399,6 +379,40 @@
 
 
                 <div runat="server" visible="false" id="function10">
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark-subtle text-primary">القسم</span>
+
+                        <asp:DropDownList ID="show_sch_deb" CssClass="form-select text-center" runat="server" AutoPostBack="true" OnSelectedIndexChanged="show_sch_deb_SelectedIndexChanged"></asp:DropDownList>
+
+                        &nbsp;&nbsp;&nbsp;
+                        <span class="input-group-text bg-dark-subtle text-primary">المرحلة</span>
+                        <asp:DropDownList ID="show_sch_stage" CssClass="form-select text-center" runat="server" AutoPostBack="true" OnSelectedIndexChanged="show_sch_deb_SelectedIndexChanged">
+                            <asp:ListItem Value="1">الاولى </asp:ListItem>
+                            <asp:ListItem Value="2">الثانية</asp:ListItem>
+                            <asp:ListItem Value="3"> الثالثة</asp:ListItem>
+                            <asp:ListItem Value="4">الرابعة</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                    <hr />
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark-subtle text-primary">المرحلة</span>
+
+                        <asp:DropDownList ID="show_sch_dayOrNight" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="show_sch_deb_SelectedIndexChanged">
+                            <asp:ListItem Value="صباحي">صباحي </asp:ListItem>
+                            <asp:ListItem Value="مسائي">مسائي</asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                   
+                    <div class="container-fliud w-100 mt-3 mb-3 justify-content-center d-flex ">
+                        
+                    <iframe runat="server" id="show_sch_file"  style="width:718px; height:700px;" frameborder="1"></iframe>
+
+
+                    </div>
+
                 </div>
 
 

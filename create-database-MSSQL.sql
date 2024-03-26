@@ -44,14 +44,10 @@ MetID int not null FOREIGN KEY REFERENCES Material(Id),
 
 create table Schedule(
 Id int not null primary key identity(1,1),
-[From] nvarchar(max) not null,
-[To] nvarchar(max) not null,
 Stage int not null ,
 DebID Int FOREIGN KEY REFERENCES Department(Id),
-MatID int FOREIGN KEY REFERENCES Material(Id),
-Teacher_Name nvarchar(max) not null,
-Notes nvarchar(max) not null,
-[Day] nvarchar(max) not null 
+[Path] nvarchar(max) not null,
+[DayOrNight] nvarchar(max) not null 
 ) 
 
 Create Table Absence(

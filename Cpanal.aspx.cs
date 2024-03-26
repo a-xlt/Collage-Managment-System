@@ -44,6 +44,7 @@ namespace Collage_Managment_System
                 add_sch_deb.Items.Add(listItem1);
                 add_grade_deb.Items.Add(listItem1);
                 show_grade_deb.Items.Add(listItem1);
+                show_sch_deb.Items.Add(listItem1);
 
                 while (reader.Read())
                 {
@@ -64,6 +65,7 @@ namespace Collage_Managment_System
                     add_sch_deb.Items.Add(listItem);
                     show_grade_deb.Items.Add(listItem);
                     add_grade_deb.Items.Add(listItem);
+                    show_sch_deb.Items.Add(listItem);
                 }
 
 
@@ -318,55 +320,39 @@ namespace Collage_Managment_System
             }
         }
 
-        protected void add_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (add_sch_deb.SelectedValue != "-1")
-            {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                con.Open();
-                SqlCommand command = new SqlCommand();
-                command.CommandType = CommandType.Text;
-                command.Connection = con;
-                command.CommandText = "SELECT * FROM Material where DebId = " + add_sch_deb.SelectedValue + " AND Stage = " + add_sch_stage.SelectedValue;
-                SqlDataReader reader = command.ExecuteReader();
-                add_sch_mat.Items.Clear();
-                while (reader.Read())
-                {
-                    ListItem listItem = new ListItem()
-                    {
-                        Value = reader[0].ToString(),
-
-                        Text = reader[1].ToString()
-                    };
-
-
-                    add_sch_mat.Items.Add(listItem);
-                }
-            }
-        }
+       
 
         protected void add_sch_save_Click(object sender, EventArgs e)
         {
+
+
+
+            Guid guid =  Guid.NewGuid();
+
+
+            add_sch_file.SaveAs(Server.MapPath("/lib/uploaded/"+guid.ToString()+".pdf"));
+
+
+
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             con.Open();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Schedule Values(N'"+add_sch_from.Text.Trim()+"' , N'"+ add_sch_to.Text.Trim() + "',"+ add_sch_stage.SelectedValue + " , "+ add_sch_deb.SelectedValue+ " ,"+ add_sch_mat.SelectedValue+ " ,N'"+ add_sch_Teacher.Text.Trim() + "', N'"+ add_sch_note.Text.Trim() + "' , N'"+ add_sch_day.SelectedValue+ "')";
+            command.CommandText = "INSERT INTO Schedule Values("+ add_sch_stage.SelectedValue+ " , "+ add_sch_deb.SelectedValue+ " , N'"+guid.ToString()+".pdf' , N'"+ add_sch_dayOrNight.SelectedValue+ "')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
                 add_sch_error.Visible = true;
-                add_sch_error.Text = "تم اضافة جدول جديد : " ;
+                add_sch_error.Text = "تم اضافة جدول جديد : ";
                 add_sch_error.CssClass = "alert alert-success ";
             }
             else
             {
                 add_sch_error.Visible = true;
                 add_sch_error.Text = "حدث خطأ";
-                    add_sch_error.CssClass = "alert alert-danger ";
+                add_sch_error.CssClass = "alert alert-danger ";
             }
         }
 
@@ -472,6 +458,27 @@ namespace Collage_Managment_System
 
                show_grade_mat.Items.Add(listItem);
             }
+        }
+
+        protected void show_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "SELECT Path FROM Schedule where DebID = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue +" AND DayOrNight = '"+ show_sch_dayOrNight.SelectedValue+ "'";
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                show_sch_file.Src = "/lib/uploaded/" + reader[0].ToString();
+            }
+            else
+                show_sch_file.Src ="";
+
+            reader.Close();
         }
     }
 }
