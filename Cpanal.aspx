@@ -376,8 +376,6 @@
 
 
                 </div>
-
-
                 <div runat="server" visible="false" id="function10">
 
                     <div class="input-group">
@@ -403,6 +401,7 @@
                             <asp:ListItem Value="صباحي">صباحي </asp:ListItem>
                             <asp:ListItem Value="مسائي">مسائي</asp:ListItem>
                         </asp:DropDownList>
+                            <asp:Button ID="show_sch_delBTN" runat="server" CssClass="btn btn-outline-danger" Text="حذف الجدول " OnClick="show_sch_delBTN_Click"/>
 
                     </div>
                    
@@ -414,8 +413,6 @@
                     </div>
 
                 </div>
-
-
                 <div runat="server" visible="false" id="function11">
 
                     <div class="container-fluid mt-5 text-center pb-5">

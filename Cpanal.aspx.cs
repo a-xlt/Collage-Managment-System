@@ -480,5 +480,19 @@ namespace Collage_Managment_System
 
             reader.Close();
         }
+
+        protected void show_sch_delBTN_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "delete FROM Schedule where DebID = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue + " AND DayOrNight = '" + show_sch_dayOrNight.SelectedValue + "'";
+            command.ExecuteNonQuery();
+            show_sch_file.Src = "";
+            
+        }
     }
 }
