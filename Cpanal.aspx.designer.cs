@@ -492,6 +492,15 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList add_sch_mat;
 
         /// <summary>
+        /// add_sch_day control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_sch_day;
+
+        /// <summary>
         /// add_sch_from control.
         /// </summary>
         /// <remarks>

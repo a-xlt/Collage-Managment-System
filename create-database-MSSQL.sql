@@ -50,7 +50,8 @@ Stage int not null ,
 DebID Int FOREIGN KEY REFERENCES Department(Id),
 MatID int FOREIGN KEY REFERENCES Material(Id),
 Teacher_Name nvarchar(max) not null,
-Notes nvarchar(max) not null
+Notes nvarchar(max) not null,
+[Day] nvarchar(max) not null 
 ) 
 
 Create Table Absence(

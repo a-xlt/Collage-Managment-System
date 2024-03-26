@@ -352,6 +352,17 @@
                     <hr />
 
 
+                    <p>اليوم</p>
+                    <asp:DropDownList ID="add_sch_day" CssClass="form-select text-center" runat="server">
+                        <asp:ListItem value="السبت">السبت</asp:ListItem>
+                        <asp:ListItem value="الأحد">الأحد</asp:ListItem>
+                        <asp:ListItem value="الإثنين">الإثنين</asp:ListItem>
+                        <asp:ListItem value="الثلاثاء">الثلاثاء</asp:ListItem>
+                        <asp:ListItem value="الأربعاء">الأربعاء</asp:ListItem>
+                        <asp:ListItem value="الخميس">الخميس</asp:ListItem>
+                    </asp:DropDownList>
+                    <hr />
+
 
                     <p>الوقت</p>
                     <div class="input-group">
@@ -385,8 +396,12 @@
 
 
                 </div>
+
+
                 <div runat="server" visible="false" id="function10">
                 </div>
+
+
                 <div runat="server" visible="false" id="function11">
 
                     <div class="container-fluid mt-5 text-center pb-5">
@@ -435,7 +450,6 @@
 
 
                 </div>
-
                 <div runat="server" visible="false" id="function12">
 
 

@@ -354,7 +354,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Schedule Values(N'"+add_sch_from.Text.Trim()+"' , N'"+ add_sch_to.Text.Trim() + "',"+ add_sch_stage.SelectedValue + " , "+ add_sch_deb.SelectedValue+ " ,"+ add_sch_mat.SelectedValue+ " ,N'"+ add_sch_Teacher.Text.Trim() + "', N'"+ add_sch_note.Text.Trim() + "')";
+            command.CommandText = "INSERT INTO Schedule Values(N'"+add_sch_from.Text.Trim()+"' , N'"+ add_sch_to.Text.Trim() + "',"+ add_sch_stage.SelectedValue + " , "+ add_sch_deb.SelectedValue+ " ,"+ add_sch_mat.SelectedValue+ " ,N'"+ add_sch_Teacher.Text.Trim() + "', N'"+ add_sch_note.Text.Trim() + "' , N'"+ add_sch_day.SelectedValue+ "')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
