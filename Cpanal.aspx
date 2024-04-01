@@ -18,10 +18,6 @@
     <title>كلية تكنولوجيا المعلومات</title>
 </head>
 <body style="background-color: rgba(128, 128, 128,0.2)">
-
-
-
-
     <div class="container-fiud">
         <form id="form1" runat="server">
 
@@ -40,6 +36,7 @@
                     <asp:ListItem Selected="True" Text="اختر العملية...." Value="-1">  </asp:ListItem>
                     <asp:ListItem Value="1"> إضافة قسم </asp:ListItem>
                     <asp:ListItem Value="2"> حذف قسم </asp:ListItem>
+                    <asp:ListItem Value="13"> اضافة كروب عملي  </asp:ListItem>
                     <asp:ListItem Value="3"> اضافة طالب </asp:ListItem>
                     <asp:ListItem Value="4"> عرض الطلاب </asp:ListItem>
                     <asp:ListItem Value="5"> حذف طالب </asp:ListItem>
@@ -130,7 +127,17 @@
                     <hr />
 
                     <p>المرحلة</p>
-                    <asp:TextBox ID="Add_stu_Stage" CssClass="form-control" TextMode="Number" max="4" min="1" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="add_stu_stage" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_stu_stage_SelectedIndexChanged">
+                        <asp:ListItem Value="-1">اختر المرحلة</asp:ListItem>
+                        <asp:ListItem Value="1">الأولى</asp:ListItem>
+                        <asp:ListItem Value="2">الثانية</asp:ListItem>
+                        <asp:ListItem Value="3">الثالثة</asp:ListItem>
+                        <asp:ListItem Value="4">الرابعة</asp:ListItem>
+                    </asp:DropDownList>
+                    <hr />
+
+                    <p>الكروب</p>
+                    <asp:DropDownList ID="add_stu_group" CssClass="form-select" runat="server"></asp:DropDownList>
                     <hr />
 
 
@@ -401,13 +408,13 @@
                             <asp:ListItem Value="صباحي">صباحي </asp:ListItem>
                             <asp:ListItem Value="مسائي">مسائي</asp:ListItem>
                         </asp:DropDownList>
-                            <asp:Button ID="show_sch_delBTN" runat="server" CssClass="btn btn-outline-danger" Text="حذف الجدول " OnClick="show_sch_delBTN_Click"/>
+                        <asp:Button ID="show_sch_delBTN" runat="server" CssClass="btn btn-outline-danger" Text="حذف الجدول " OnClick="show_sch_delBTN_Click" />
 
                     </div>
-                   
+
                     <div class="container-fliud w-100 mt-3 mb-3 justify-content-center d-flex ">
-                        
-                    <iframe runat="server" id="show_sch_file"  style="width:718px; height:700px;" frameborder="1"></iframe>
+
+                        <iframe runat="server" id="show_sch_file" style="width: 718px; height: 700px;" frameborder="1"></iframe>
 
 
                     </div>
@@ -520,7 +527,44 @@ WHERE  (dbo.Department.Id = @debid) AND (dbo.Student.Stage = @stageid) AND (dbo.
                         </SelectParameters>
                     </asp:SqlDataSource>
                 </div>
+                <div runat="server" visible="false" id="function13">
 
+                    <div class="container-fluid mt-5 text-center pb-5">
+
+                        <asp:Label ID="add_grp_error" runat="server" Text=""></asp:Label>
+
+                    </div>
+
+                    <p>اسم الكروب</p>
+                    <asp:TextBox ID="add_grp_latter" CssClass="form-control" runat="server"></asp:TextBox>
+
+                    <hr />
+
+                    <p>الحد الأقصى لعدد الطلاب</p>
+
+                    <asp:TextBox ID="add_grp_max" CssClass="form-control" TextMode="number" runat="server"></asp:TextBox>
+
+                    <hr />
+
+                    <p>القسم</p>
+
+                    <asp:DropDownList ID="add_grp_deb" CssClass="form-select" runat="server"></asp:DropDownList>
+
+                    <hr />
+
+                    <p>المرحلة</p>
+   <asp:DropDownList ID="add_grp_stage" CssClass="form-select" runat="server">
+       <asp:ListItem Value="-1">اختر المرحلة</asp:ListItem>
+       <asp:ListItem Value="1">الأولى</asp:ListItem>
+       <asp:ListItem Value="2">الثانية</asp:ListItem>
+       <asp:ListItem Value="3">الثالثة</asp:ListItem>
+       <asp:ListItem Value="4">الرابعة</asp:ListItem>
+   </asp:DropDownList>                    <hr />
+
+                    <asp:Button ID="add_grp_save" runat="server" CssClass="btn btn-outline-success w-100  text-center " Text="حفظ" OnClick="add_grp_save_Click" />
+
+
+                </div>
             </div>
         </form>
     </div>

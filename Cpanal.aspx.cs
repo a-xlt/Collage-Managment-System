@@ -45,6 +45,7 @@ namespace Collage_Managment_System
                 add_grade_deb.Items.Add(listItem1);
                 show_grade_deb.Items.Add(listItem1);
                 show_sch_deb.Items.Add(listItem1);
+                add_grp_deb.Items.Add(listItem1);
 
                 while (reader.Read())
                 {
@@ -66,6 +67,7 @@ namespace Collage_Managment_System
                     show_grade_deb.Items.Add(listItem);
                     add_grade_deb.Items.Add(listItem);
                     show_sch_deb.Items.Add(listItem);
+                    add_grp_deb.Items.Add(listItem);
                 }
 
 
@@ -94,6 +96,7 @@ namespace Collage_Managment_System
                 if (Cnumber == "10") { function10.Visible = true; }
                 if (Cnumber == "11") { function11.Visible = true; }
                 if (Cnumber == "12") { function12.Visible = true; }
+                if (Cnumber == "13") { function13.Visible = true; }
             }
         }
 
@@ -112,6 +115,7 @@ namespace Collage_Managment_System
             function10.Visible = false;
             function11.Visible = false;
             function12.Visible = false;
+            function13.Visible = false;
         }
 
         protected void Add_stu_saveBTN_Click(object sender, EventArgs e)
@@ -138,7 +142,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Student Values(N'" + Add_stu_Name.Text.Trim() + "' , N'" + Add_stu_birthday.Text + "' ," + add_stu_deb.SelectedValue + " ," + Add_stu_Stage.Text + ", N'" + Add_stu_gender.SelectedValue + "' , N'" + Add_stu_phone.Text + "',N'964-010-" + add_stu_deb.SelectedValue + "-" + id_str.ToString() + "')";
+            command.CommandText = "INSERT INTO Student Values(N'" + Add_stu_Name.Text.Trim() + "' , N'" + Add_stu_birthday.Text + "' ," + add_stu_deb.SelectedValue + " ,"+add_stu_group.SelectedValue+" ," + add_stu_stage.SelectedValue + ", N'" + Add_stu_gender.SelectedValue + "' , N'" + Add_stu_phone.Text + "',N'964-010-" + add_stu_deb.SelectedValue + "-" + id_str.ToString() + "')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
@@ -493,6 +497,59 @@ namespace Collage_Managment_System
             command.ExecuteNonQuery();
             show_sch_file.Src = "";
             
+        }
+
+        protected void add_grp_save_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "INSERT INTO Groups Values('"+ add_grp_latter.Text+ "' ,"+ add_grp_max.Text + " , "+ add_grp_deb.SelectedValue+ " , "+ add_grp_stage.SelectedValue+ " )";
+            int x = command.ExecuteNonQuery();
+            if (x > 0)
+            {
+                add_grade_error.Visible = true;
+                add_grade_error.Text = "تم اضافة كروب  ";
+                add_grade_error.CssClass = "alert alert-success ";
+            }
+            else
+            {
+                add_grade_error.Visible = true;
+                add_grade_error.Text = "حدث خطأ";
+                add_grade_error.CssClass = "alert alert-danger ";
+            }
+        }
+
+        protected void add_stu_stage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "SELECT * FROM Groups where DebId = " + add_stu_deb.SelectedValue + " AND Stage = " + add_stu_stage.SelectedValue;
+            SqlDataReader reader = command.ExecuteReader();
+
+            add_stu_group.Items.Clear();
+
+            while (reader.Read())
+            {
+                ListItem listItem = new ListItem()
+                {
+                    Value = reader["Id"].ToString(),
+
+                    Text = reader["groupLatter"].ToString()
+                };
+
+
+                add_stu_group.Items.Add(listItem);
+            }
         }
     }
 }

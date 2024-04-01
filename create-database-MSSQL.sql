@@ -11,17 +11,25 @@ Id int primary key not null identity(1,1),
 [Name] nvarchar(max) not null  
 )
 
+Create table Groups(
+Id INT PRIMARY KEY NOT NULL identity(1,1),
+groupLatter nvarchar(1) not null,
+groupMax int not null ,
+DebId INT FOREIGN KEY REFERENCES Department(Id),
+Stage int not null
+)
+
 Create table Student (
 	Id int not null primary key identity(1,1),
 	[Name] nvarchar(max) not null ,
 	Birthdate nvarchar(max) not null ,
 	Deb INT FOREIGN KEY REFERENCES Department(Id),
+	GroupId INT FOREIGN KEY REFERENCES Groups(Id),
 	Stage int not null,
 	Gender nvarchar(max) not null,
 	Phone_Number nvarchar(max) not null,
 	Id_str nvarchar(max) not null
 ) 
-
 
 CREATE table Material
 (
@@ -37,7 +45,12 @@ DebId int FOREIGN KEY REFERENCES Department(Id)
 Create table Grade
 (
 Id int not null primary key identity(1,1),
-Grade float not null,
+g1 float null default 0,
+g2 float null default 0,
+g3 float null default 0,
+absence float null default 0,
+pluses float null default 0,
+FinalGrade float null default 0,
 StuID int not null FOREIGN KEY REFERENCES Student(Id),
 MetID int not null FOREIGN KEY REFERENCES Material(Id),
 ) 
@@ -46,22 +59,29 @@ create table Schedule(
 Id int not null primary key identity(1,1),
 Stage int not null ,
 DebID Int FOREIGN KEY REFERENCES Department(Id),
-[Path] nvarchar(max) not null,
-[DayOrNight] nvarchar(max) not null 
+[DayOrNight] nvarchar(max) not null,
+[Day] int not null , 
+
+[FourOrThree] nvarchar(max) not null,
+
+t1 nvarchar(max) null ,
+m1 int null FOREIGN KEY REFERENCES Material(Id),
+i1 nvarchar(max) null,
+
+t2 nvarchar(max) null ,
+m2 int null FOREIGN KEY REFERENCES Material(Id),
+i2 nvarchar(max) null,
+
+t3 nvarchar(max) null ,
+m3 int null FOREIGN KEY REFERENCES Material(Id),
+i3 nvarchar(max) null,
+
+t4 nvarchar(max) null ,
+m4 int null FOREIGN KEY REFERENCES Material(Id),
+i4 nvarchar(max) null
 ) 
 
-Create Table Absence(
-Id int not null primary key identity(1,1),
-[Date] datetime not null,
-MatID int FOREIGN KEY REFERENCES Material(Id),
-Teacher_name nvarchar(max) not null,
-number_Of_absence int not null,
-[group] nvarchar(max) not null,
-DebID Int FOREIGN KEY REFERENCES Department(Id),
-[stage] nvarchar(max) not null,
-Notes nvarchar(max) not null,
-Students_Names nvarchar(max) not null 
-) 
+
 
 
 

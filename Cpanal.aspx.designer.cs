@@ -150,13 +150,22 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList add_stu_deb;
 
         /// <summary>
-        /// Add_stu_Stage control.
+        /// add_stu_stage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Add_stu_Stage;
+        protected global::System.Web.UI.WebControls.DropDownList add_stu_stage;
+
+        /// <summary>
+        /// add_stu_group control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_stu_group;
 
         /// <summary>
         /// Add_stu_gender control.
@@ -688,5 +697,68 @@ namespace Collage_Managment_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource show_degree_Datasource;
+
+        /// <summary>
+        /// function13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl function13;
+
+        /// <summary>
+        /// add_grp_error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label add_grp_error;
+
+        /// <summary>
+        /// add_grp_latter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_grp_latter;
+
+        /// <summary>
+        /// add_grp_max control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_grp_max;
+
+        /// <summary>
+        /// add_grp_deb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_grp_deb;
+
+        /// <summary>
+        /// add_grp_stage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_grp_stage;
+
+        /// <summary>
+        /// add_grp_save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button add_grp_save;
     }
 }
