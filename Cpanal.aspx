@@ -144,8 +144,8 @@
 
                     <p>الجنس</p>
                     <asp:DropDownList ID="Add_stu_gender" CssClass="form-select" runat="server">
-                        <asp:ListItem Value="male">ذكر</asp:ListItem>
-                        <asp:ListItem Value="female">انثى</asp:ListItem>
+                        <asp:ListItem Value="ذكر">ذكر</asp:ListItem>
+                        <asp:ListItem Value="أنثى">انثى</asp:ListItem>
                     </asp:DropDownList>
 
                     <hr />
