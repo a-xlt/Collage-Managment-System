@@ -204,13 +204,13 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl function4;
 
         /// <summary>
-        /// show_stu_del_ddl control.
+        /// show_stu_ddl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList show_stu_del_ddl;
+        protected global::System.Web.UI.WebControls.DropDownList show_stu_ddl;
 
         /// <summary>
         /// Student_show_DG control.
@@ -627,13 +627,49 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList add_grade_mat;
 
         /// <summary>
-        /// add_grade_grade control.
+        /// add_grade_g1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox add_grade_grade;
+        protected global::System.Web.UI.WebControls.TextBox add_grade_g1;
+
+        /// <summary>
+        /// add_grade_g2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_grade_g2;
+
+        /// <summary>
+        /// add_grade_g3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_grade_g3;
+
+        /// <summary>
+        /// add_grade_absence control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_grade_absence;
+
+        /// <summary>
+        /// add_grade_plus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox add_grade_plus;
 
         /// <summary>
         /// add_grade_save control.

@@ -36,7 +36,7 @@ namespace Collage_Managment_System
                     Selected = true,
                 };
                 add_stu_deb.Items.Add(listItem1);
-                show_stu_del_ddl.Items.Add(listItem1);
+                show_stu_ddl.Items.Add(listItem1);
                 del_deb_ddl.Items.Add(listItem1);
                 add_mat_deb.Items.Add(listItem1);
                 mat_del_deb.Items.Add(listItem1);
@@ -59,7 +59,7 @@ namespace Collage_Managment_System
 
                     add_stu_deb.Items.Add(listItem);
                     del_deb_ddl.Items.Add(listItem);
-                    show_stu_del_ddl.Items.Add(listItem);
+                    show_stu_ddl.Items.Add(listItem);
                     add_mat_deb.Items.Add(listItem);
                     mat_del_deb.Items.Add(listItem);
                     show_mat_deb.Items.Add(listItem);
@@ -391,6 +391,8 @@ namespace Collage_Managment_System
                 command.CommandText = "SELECT * FROM Material where DebId = " + add_grade_deb.SelectedValue + " AND Stage = " + add_grade_stage.SelectedValue;
                 SqlDataReader reader2 = command.ExecuteReader();
                 add_grade_mat.Items.Clear();
+                add_grade_mat.Items.Add(new ListItem { Value="-1" , Text="اختر المادة" ,Selected=true});
+
                 while (reader2.Read())
                 {
                     ListItem listItem = new ListItem()
@@ -421,20 +423,69 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Grade Values("+ add_grade_grade.Text.Trim()+ " , "+ add_grade_student.SelectedValue+ " , "+ add_grade_mat.SelectedValue+ " )";
-            int x = command.ExecuteNonQuery();
-            if (x > 0)
+
+            command.CommandText = "SELECT * FROM Grade where StuID = " + add_grade_student.SelectedValue + "  AND MetID= "+ add_grade_mat.SelectedValue;
+            SqlDataReader reader = command.ExecuteReader();
+            var finalgrade = (Convert.ToDouble(add_grade_g1.Text) + Convert.ToDouble(add_grade_g2.Text) + Convert.ToDouble(add_grade_g3.Text)) / 3;
+            finalgrade += Convert.ToDouble(add_grade_absence.Text) + Convert.ToDouble(add_grade_plus.Text);
+            if (reader.Read())
             {
-                add_grade_error.Visible = true;
-                add_grade_error.Text = "تم اضافة  درجة الطالب  ";
-                add_grade_error.CssClass = "alert alert-success ";
+                reader.Close();
+                SqlConnection con2 = new SqlConnection();
+                con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con2.Open();
+                SqlCommand command2 = new SqlCommand();
+                command2.CommandType = CommandType.Text;
+                command2.Connection = con2;
+                command2.CommandText = "Update Grade set [g1] = " + add_grade_g1.Text.Trim() +
+                    ", [g2] = " + add_grade_g2.Text.Trim() +
+                    ", [g3] = " + add_grade_g3.Text.Trim() +
+                    ", [absence] = " + add_grade_absence.Text.Trim() +
+                    ", [pluses] = " + add_grade_plus.Text.Trim() +
+                    ", [FinalGrade] = " + finalgrade.ToString();
+                int x = command2.ExecuteNonQuery();
+                if (x > 0)
+                {
+                    add_grade_error.Visible = true;
+                    add_grade_error.Text = "تم اضافة  درجة الطالب  ";
+                    add_grade_error.CssClass = "alert alert-success ";
+                }
+                else
+                {
+                    add_grade_error.Visible = true;
+                    add_grade_error.Text = "حدث خطأ";
+                    add_grade_error.CssClass = "alert alert-danger ";
+                }
             }
             else
             {
-                add_grade_error.Visible = true;
-                add_grade_error.Text = "حدث خطأ";
-                add_grade_error.CssClass = "alert alert-danger ";
+                reader.Close();
+                SqlConnection con2 = new SqlConnection();
+                con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con2.Open();
+                SqlCommand command2 = new SqlCommand();
+                command2.CommandType = CommandType.Text;
+                command2.Connection = con2;
+                command2.CommandText = "INSERT INTO Grade Values(" + add_grade_g1.Text.Trim() + "," + add_grade_g2.Text.Trim() + " ," + add_grade_g3.Text.Trim() + "," + add_grade_absence.Text.Trim() + "," + add_grade_plus.Text.Trim() + " , " + finalgrade.ToString() + " , " + add_grade_student.SelectedValue + " , " + add_grade_mat.SelectedValue + " )";
+                int x = command2.ExecuteNonQuery();
+                if (x > 0)
+                {
+                    add_grade_error.Visible = true;
+                    add_grade_error.Text = "تم اضافة  درجة الطالب  ";
+                    add_grade_error.CssClass = "alert alert-success ";
+                }
+                else
+                {
+                    add_grade_error.Visible = true;
+                    add_grade_error.Text = "حدث خطأ";
+                    add_grade_error.CssClass = "alert alert-danger ";
+                }
             }
+
+
+
+
+
         }
 
         protected void show_grade_deb_SelectedIndexChanged(object sender, EventArgs e)
@@ -549,6 +600,35 @@ namespace Collage_Managment_System
 
 
                 add_stu_group.Items.Add(listItem);
+            }
+        }
+
+        protected void add_grade_mat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "SELECT * FROM Grade where StuID = " + add_grade_student.SelectedValue +"AND MetID = " + add_grade_mat.SelectedValue;
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                add_grade_g1.Text = reader["g1"].ToString();
+                add_grade_g2.Text = reader["g2"].ToString();
+                add_grade_g3.Text = reader["g3"].ToString();
+                add_grade_absence.Text = reader["absence"].ToString();
+                add_grade_plus.Text = reader["pluses"].ToString();
+
+            }
+            else
+            {
+                add_grade_g1.Text = "0";
+                add_grade_g2.Text = "0";
+                add_grade_g3.Text = "0";
+                add_grade_absence.Text = "0";
+                add_grade_plus.Text = "0";
             }
         }
     }

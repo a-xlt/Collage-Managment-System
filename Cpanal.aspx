@@ -164,7 +164,7 @@
 
 
                     <br />
-                    <asp:DropDownList ID="show_stu_del_ddl" CssClass="form-select" AutoPostBack="true" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="show_stu_ddl" CssClass="form-select" AutoPostBack="true" runat="server"></asp:DropDownList>
                     <br />
 
 
@@ -175,6 +175,7 @@
                             <asp:BoundField DataField="Name" HeaderText="الاسم" SortExpression="Name" />
                             <asp:BoundField DataField="Birthdate" HeaderText="تاريخ الميلاد" SortExpression="Birthdate" />
                             <asp:BoundField DataField="Stage" HeaderText="المرحلة" SortExpression="Stage" />
+                            <asp:BoundField DataField="groupLatter" HeaderText="الكروب" SortExpression="groupLatter" />
                             <asp:BoundField DataField="Gender" HeaderText="الجنس" SortExpression="Gender" />
                             <asp:BoundField DataField="phone_Number" HeaderText="رقم الهاتف" SortExpression="phone_Number" />
                         </Columns>
@@ -189,9 +190,12 @@
                         <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
 
-                    <asp:SqlDataSource ID="Student_Show_DG_DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:con %>" SelectCommand="SELECT *  FROM Student where Deb =  @debId">
+                    <asp:SqlDataSource ID="Student_Show_DG_DataSource" runat="server" ConnectionString="<%$ ConnectionStrings:con %>" SelectCommand="SELECT dbo.Groups.groupLatter, dbo.Student.Name, dbo.Student.Birthdate, dbo.Student.Deb, dbo.Student.Stage, dbo.Student.Gender, dbo.Student.Phone_Number, dbo.Student.Id_str
+FROM     dbo.Groups INNER JOIN
+                  dbo.Student ON dbo.Groups.Id = dbo.Student.GroupId
+WHERE  (dbo.Student.Deb=@debId) ">
                         <SelectParameters>
-                            <asp:ControlParameter ControlID="show_stu_del_ddl" Name="debId" PropertyName="Text" Type="Int32" DefaultValue="0" />
+                            <asp:ControlParameter ControlID="show_stu_ddl" Name="debId" PropertyName="Text" Type="Int32" DefaultValue="0" />
                         </SelectParameters>
                     </asp:SqlDataSource>
 
@@ -453,12 +457,34 @@
                         &nbsp;&nbsp;
                        
                         <span class="input-group-text  bg-dark-subtle text-primary">المادة</span>
-                        <asp:DropDownList ID="add_grade_mat" CssClass="form-select text-center" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="add_grade_mat" CssClass="form-select text-center" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_grade_mat_SelectedIndexChanged"></asp:DropDownList>
                         &nbsp;&nbsp;
-                        
-                        <span class="input-group-text  bg-dark-subtle text-primary">الدرجة</span>
-                        <asp:TextBox ID="add_grade_grade" CssClass="form-control text-center" step="0.01" TextMode="Number" runat="server"></asp:TextBox>
+                       
                     </div>
+                    <hr />
+
+                    <div class="input-group">
+                        <span class="input-group-text  bg-dark-subtle text-primary">الشهر الاول</span>
+                        <asp:TextBox ID="add_grade_g1" CssClass="form-control text-center" step="0.01" TextMode="Number" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        <span class="input-group-text  bg-dark-subtle text-primary">الشهر الثاني</span>
+                        <asp:TextBox ID="add_grade_g2" CssClass="form-control text-center" step="0.01" TextMode="Number" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        <span class="input-group-text  bg-dark-subtle text-primary">الشهر الثالث</span>
+                        <asp:TextBox ID="add_grade_g3" CssClass="form-control text-center" step="0.01" TextMode="Number" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        <span class="input-group-text  bg-dark-subtle text-primary">الغياب</span>
+                        <asp:TextBox ID="add_grade_absence" CssClass="form-control text-center" step="0.01" TextMode="Number" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        <span class="input-group-text  bg-dark-subtle text-primary">الاضافات</span>
+                        <asp:TextBox ID="add_grade_plus" CssClass="form-control text-center" step="0.01" TextMode="Number" runat="server"></asp:TextBox>
+
+                    </div>
+
 
                     <hr />
                     <asp:Button ID="add_grade_save" CssClass="w-100 btn btn-outline-success m-1" runat="server" OnClick="add_grade_save_Click" Text="حفظ" />
@@ -495,7 +521,12 @@
                         <Columns>
 
                             <asp:BoundField DataField="Name" HeaderText="إسم الطالب" SortExpression="Name" />
-                            <asp:BoundField DataField="Grade" HeaderText="الدرجة " SortExpression="Grade" />
+                            <asp:BoundField DataField="g1" HeaderText="الشهر الاول" SortExpression="Grade" />
+                            <asp:BoundField DataField="g2" HeaderText="الشهر الثاني" SortExpression="Grade" />
+                            <asp:BoundField DataField="g3" HeaderText="الشهر الثالث" SortExpression="Grade" />
+                            <asp:BoundField DataField="absence" HeaderText="الغياب" SortExpression="Grade" />
+                            <asp:BoundField DataField="pluses" HeaderText="الاضافات" SortExpression="Grade" />
+                            <asp:BoundField DataField="FinalGrade" HeaderText="الدرجة النهائية (السعي)" SortExpression="Grade" />
 
                         </Columns>
 
@@ -514,7 +545,7 @@
 
 
 
-                    <asp:SqlDataSource runat="server" ID="show_degree_Datasource" ConnectionString='<%$ ConnectionStrings:con %>' SelectCommand="SELECT dbo.Student.Name, dbo.Grade.Grade
+                    <asp:SqlDataSource runat="server" ID="show_degree_Datasource" ConnectionString='<%$ ConnectionStrings:con %>' SelectCommand="SELECT dbo.Student.Name, dbo.Grade.g1 ,dbo.Grade.g2 ,dbo.Grade.g3 ,dbo.Grade.absence ,dbo.Grade.pluses,  dbo.Grade.FinalGrade 
 FROM     dbo.Student INNER JOIN
                   dbo.Grade ON dbo.Student.Id = dbo.Grade.StuID INNER JOIN
                   dbo.Department ON dbo.Student.Deb = dbo.Department.Id INNER JOIN
@@ -553,13 +584,14 @@ WHERE  (dbo.Department.Id = @debid) AND (dbo.Student.Stage = @stageid) AND (dbo.
                     <hr />
 
                     <p>المرحلة</p>
-   <asp:DropDownList ID="add_grp_stage" CssClass="form-select" runat="server">
-       <asp:ListItem Value="-1">اختر المرحلة</asp:ListItem>
-       <asp:ListItem Value="1">الأولى</asp:ListItem>
-       <asp:ListItem Value="2">الثانية</asp:ListItem>
-       <asp:ListItem Value="3">الثالثة</asp:ListItem>
-       <asp:ListItem Value="4">الرابعة</asp:ListItem>
-   </asp:DropDownList>                    <hr />
+                    <asp:DropDownList ID="add_grp_stage" CssClass="form-select" runat="server">
+                        <asp:ListItem Value="-1">اختر المرحلة</asp:ListItem>
+                        <asp:ListItem Value="1">الأولى</asp:ListItem>
+                        <asp:ListItem Value="2">الثانية</asp:ListItem>
+                        <asp:ListItem Value="3">الثالثة</asp:ListItem>
+                        <asp:ListItem Value="4">الرابعة</asp:ListItem>
+                    </asp:DropDownList>
+                    <hr />
 
                     <asp:Button ID="add_grp_save" runat="server" CssClass="btn btn-outline-success w-100  text-center " Text="حفظ" OnClick="add_grp_save_Click" />
 
