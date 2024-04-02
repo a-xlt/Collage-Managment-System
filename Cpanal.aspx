@@ -372,12 +372,11 @@ WHERE  (dbo.Student.Deb=@debId) ">
                         </asp:DropDownList>
 
                     </div>
+                    <hr />
+
+                   
 
 
-                    <p>ملف الجدول</p>
-                    <div class="input-group">
-                        <asp:FileUpload ID="add_sch_file" accept="application/pdf" CssClass="form-control" runat="server" />
-                    </div>
 
                     <hr />
 

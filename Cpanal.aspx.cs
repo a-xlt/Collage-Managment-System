@@ -331,20 +331,13 @@ namespace Collage_Managment_System
 
 
 
-            Guid guid =  Guid.NewGuid();
-
-
-            add_sch_file.SaveAs(Server.MapPath("/lib/uploaded/"+guid.ToString()+".pdf"));
-
-
-
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             con.Open();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Schedule Values("+ add_sch_stage.SelectedValue+ " , "+ add_sch_deb.SelectedValue+ " , N'"+guid.ToString()+".pdf' , N'"+ add_sch_dayOrNight.SelectedValue+ "')";
+            //command.CommandText = "INSERT INTO Schedule Values("+ add_sch_stage.SelectedValue+ " , "+ add_sch_deb.SelectedValue+ " , N'"+guid.ToString()+".pdf' , N'"+ add_sch_dayOrNight.SelectedValue+ "')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {

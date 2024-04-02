@@ -501,15 +501,6 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList add_sch_dayOrNight;
 
         /// <summary>
-        /// add_sch_file control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload add_sch_file;
-
-        /// <summary>
         /// add_sch_save control.
         /// </summary>
         /// <remarks>
