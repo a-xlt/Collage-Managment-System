@@ -143,7 +143,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Student Values(N'" + Add_stu_Name.Text.Trim() + "' , N'" + Add_stu_birthday.Text + "' ," + add_stu_deb.SelectedValue + " ,"+add_stu_group.SelectedValue+" ," + add_stu_stage.SelectedValue + ", N'" + Add_stu_gender.SelectedValue + "' , N'" + Add_stu_phone.Text + "',N'964-010-" + add_stu_deb.SelectedValue + "-" + id_str.ToString() + "')";
+            command.CommandText = "INSERT INTO Student Values(N'" + Add_stu_Name.Text.Trim() + "' , N'" + Add_stu_birthday.Text + "' ," + add_stu_deb.SelectedValue + " ," + add_stu_group.SelectedValue + " ," + add_stu_stage.SelectedValue + ", N'" + Add_stu_gender.SelectedValue + "' , N'" + Add_stu_phone.Text + "',N'964-010-" + add_stu_deb.SelectedValue + "-" + id_str.ToString() + "')";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
@@ -212,7 +212,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = 
+            command.CommandText =
                 ";delete from Material where DebId=" + del_deb_ddl.SelectedValue +
                 ";delete from Schedule where  DebId=" + del_deb_ddl.SelectedValue +
                 ";delete from Student where  Deb=" + del_deb_ddl.SelectedValue +
@@ -325,27 +325,22 @@ namespace Collage_Managment_System
             }
         }
 
-       
+
 
         protected void add_sch_save_Click(object sender, EventArgs e)
         {
-
-
-
-            Guid guid =  Guid.NewGuid();
-
-
-            add_sch_file.SaveAs(Server.MapPath("/lib/uploaded/"+guid.ToString()+".pdf"));
-
-
-
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             con.Open();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Schedule Values("+ add_sch_stage.SelectedValue+ " , "+ add_sch_deb.SelectedValue+ " , N'"+guid.ToString()+".pdf' , N'"+ add_sch_dayOrNight.SelectedValue+ "')";
+            command.CommandText = "INSERT INTO Schedule Values(" + add_sch_stage.SelectedValue + " , " + add_sch_deb.SelectedValue +
+                " , '" + add_sch_dayOrNight.SelectedValue + "' , " + add_sch_day.SelectedValue + " , '" + add_sch_FourOrThree.SelectedValue +
+                "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedValue + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
+                "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedValue + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
+                "' , '" + add_sch_m3.SelectedValue + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedValue +
+                "' , '" + add_sch_i4.Text + "' )";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
@@ -392,7 +387,7 @@ namespace Collage_Managment_System
                 command.CommandText = "SELECT * FROM Material where DebId = " + add_grade_deb.SelectedValue + " AND Stage = " + add_grade_stage.SelectedValue;
                 SqlDataReader reader2 = command.ExecuteReader();
                 add_grade_mat.Items.Clear();
-                add_grade_mat.Items.Add(new ListItem { Value="-1" , Text="اختر المادة" ,Selected=true});
+                add_grade_mat.Items.Add(new ListItem { Value = "-1", Text = "اختر المادة", Selected = true });
 
                 while (reader2.Read())
                 {
@@ -425,7 +420,7 @@ namespace Collage_Managment_System
             command.CommandType = CommandType.Text;
             command.Connection = con;
 
-            command.CommandText = "SELECT * FROM Grade where StuID = " + add_grade_student.SelectedValue + "  AND MetID= "+ add_grade_mat.SelectedValue;
+            command.CommandText = "SELECT * FROM Grade where StuID = " + add_grade_student.SelectedValue + "  AND MetID= " + add_grade_mat.SelectedValue;
             SqlDataReader reader = command.ExecuteReader();
             var finalgrade = (Convert.ToDouble(add_grade_g1.Text) + Convert.ToDouble(add_grade_g2.Text) + Convert.ToDouble(add_grade_g3.Text)) / 3;
             finalgrade += Convert.ToDouble(add_grade_absence.Text) + Convert.ToDouble(add_grade_plus.Text);
@@ -499,8 +494,8 @@ namespace Collage_Managment_System
             command.Connection = con;
             command.CommandText = "SELECT * FROM Material where DebId = " + show_grade_deb.SelectedValue + " AND Stage = " + show_grade_stage.SelectedValue;
             SqlDataReader reader = command.ExecuteReader();
-           
-           show_grade_mat.Items.Clear();
+
+            show_grade_mat.Items.Clear();
 
             while (reader.Read())
             {
@@ -512,43 +507,21 @@ namespace Collage_Managment_System
                 };
 
 
-               show_grade_mat.Items.Add(listItem);
+                show_grade_mat.Items.Add(listItem);
             }
         }
 
         protected void show_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-            con.Open();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.Connection = con;
-            command.CommandText = "SELECT Path FROM Schedule where DebID = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue +" AND DayOrNight = '"+ show_sch_dayOrNight.SelectedValue+ "'";
-            SqlDataReader reader = command.ExecuteReader();
+            
 
-            if (reader.Read())
-            {
-                show_sch_file.Src = "/lib/uploaded/" + reader[0].ToString();
-            }
-            else
-                show_sch_file.Src ="";
-
-            reader.Close();
         }
 
         protected void show_sch_delBTN_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-            con.Open();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.Connection = con;
-            command.CommandText = "delete FROM Schedule where DebID = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue + " AND DayOrNight = '" + show_sch_dayOrNight.SelectedValue + "'";
-            command.ExecuteNonQuery();
-            show_sch_file.Src = "";
-            
+           
+
+
         }
 
         protected void add_grp_save_Click(object sender, EventArgs e)
@@ -560,7 +533,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Groups Values('"+ add_grp_latter.Text+ "' ,"+ add_grp_max.Text + " , "+ add_grp_deb.SelectedValue+ " , "+ add_grp_stage.SelectedValue+ " )";
+            command.CommandText = "INSERT INTO Groups Values('" + add_grp_latter.Text + "' ," + add_grp_max.Text + " , " + add_grp_deb.SelectedValue + " , " + add_grp_stage.SelectedValue + " )";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
@@ -612,7 +585,7 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "SELECT * FROM Grade where StuID = " + add_grade_student.SelectedValue +"AND MetID = " + add_grade_mat.SelectedValue;
+            command.CommandText = "SELECT * FROM Grade where StuID = " + add_grade_student.SelectedValue + "AND MetID = " + add_grade_mat.SelectedValue;
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -630,6 +603,185 @@ namespace Collage_Managment_System
                 add_grade_g3.Text = "0";
                 add_grade_absence.Text = "0";
                 add_grade_plus.Text = "0";
+            }
+        }
+
+        protected void add_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "SELECT * FROM Schedule where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue + " AND Day = " + add_sch_day.SelectedValue + " AND FourOrThree = '" + add_sch_FourOrThree.SelectedValue + "' ";
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    add_sch_m1.Items.Clear();
+                    add_sch_m2.Items.Clear();
+                    add_sch_m3.Items.Clear();
+                    add_sch_m4.Items.Clear();
+
+                    if (add_sch_FourOrThree.SelectedValue == "three")
+                    {
+                        sch_1.Visible = true;
+                        sch_2.Visible = true;
+                        sch_3.Visible = true;
+                        sch_4.Visible = false;
+
+                        add_sch_t1_from.Text = reader[6].ToString();
+                        add_sch_t1_to.Text = reader[7].ToString();
+                        add_sch_m1.Text = reader[8].ToString();
+                        add_sch_i1.Text = reader[9].ToString();
+
+                        add_sch_t2_from.Text = reader[10].ToString();
+                        add_sch_t2_to.Text = reader[11].ToString();
+                        add_sch_m2.Text = reader[12].ToString();
+                        add_sch_i2.Text = reader[13].ToString();
+
+                        add_sch_t3_from.Text = reader[14].ToString();
+                        add_sch_t3_to.Text = reader[15].ToString();
+                        add_sch_m3.Text = reader[16].ToString();
+                        add_sch_i3.Text = reader[17].ToString();
+
+                        add_sch_t4_from.Text = "";
+                        add_sch_t4_to.Text = "";
+                        add_sch_m4.Text = "";
+                        add_sch_i4.Text = "";
+                    }
+                    else if (add_sch_FourOrThree.SelectedValue == "four")
+                    {
+                        sch_1.Visible = true;
+                        sch_2.Visible = true;
+                        sch_3.Visible = true;
+                        sch_4.Visible = true;
+
+                        add_sch_t1_from.Text = reader[6].ToString();
+                        add_sch_t1_to.Text = reader[7].ToString();
+                        add_sch_m1.Text = reader[8].ToString();
+                        add_sch_i1.Text = reader[9].ToString();
+
+                        add_sch_t2_from.Text = reader[10].ToString();
+                        add_sch_t2_to.Text = reader[11].ToString();
+                        add_sch_m2.Text = reader[12].ToString();
+                        add_sch_i2.Text = reader[13].ToString();
+
+                        add_sch_t3_from.Text = reader[14].ToString();
+                        add_sch_t3_to.Text = reader[15].ToString();
+                        add_sch_m3.Text = reader[16].ToString();
+                        add_sch_i3.Text = reader[17].ToString();
+
+                        add_sch_t4_from.Text = reader[18].ToString();
+                        add_sch_t4_to.Text = reader[19].ToString();
+                        add_sch_m4.Text = reader[20].ToString();
+                        add_sch_i4.Text = reader[21].ToString();
+                    }
+
+                    reader.Close();
+                    con.Close();
+
+                    SqlConnection con2 = new SqlConnection();
+                    con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                    con2.Open();
+                    SqlCommand command2 = new SqlCommand();
+                    command2.CommandType = CommandType.Text;
+                    command2.Connection = con2;
+                    command2.CommandText = "SELECT * FROM Material where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue;
+                    SqlDataReader reader2 = command2.ExecuteReader();
+                    while (reader2.Read())
+                    {
+
+                        ListItem listItem = new ListItem()
+                        {
+                            Value = reader2[1].ToString(),
+
+                            Text = reader2[1].ToString()
+                        };
+
+                        add_sch_m1.Items.Add(listItem);
+                        add_sch_m2.Items.Add(listItem);
+                        add_sch_m3.Items.Add(listItem);
+                        add_sch_m4.Items.Add(listItem);
+                    }
+                    reader2.Close();
+                    con2.Close();
+
+                }
+                else
+                {
+                    add_sch_m1.Items.Clear();
+                    add_sch_m2.Items.Clear();
+                    add_sch_m3.Items.Clear();
+                    add_sch_m4.Items.Clear();
+
+                    if (add_sch_FourOrThree.SelectedValue == "three")
+                    {
+                        sch_1.Visible = true;
+                        sch_2.Visible = true;
+                        sch_3.Visible = true;
+                        sch_4.Visible = false;
+                    }
+                    else if (add_sch_FourOrThree.SelectedValue == "four")
+                    {
+                        sch_1.Visible = true;
+                        sch_2.Visible = true;
+                        sch_3.Visible = true;
+                        sch_4.Visible = true;
+                    }
+                    else if (add_sch_FourOrThree.SelectedValue == "-1")
+                    {
+                        sch_1.Visible = false;
+                        sch_2.Visible = false;
+                        sch_3.Visible = false;
+                        sch_4.Visible = false;
+                    }
+                    add_sch_t1_from.Text = "";
+                    add_sch_t1_to.Text = "";
+                    add_sch_i1.Text = "";
+
+                    add_sch_t2_from.Text = "";
+                    add_sch_t2_to.Text = "";
+                    add_sch_i2.Text = "";
+
+                    add_sch_t3_from.Text = "";
+                    add_sch_t3_to.Text = "";
+                    add_sch_i3.Text = "";
+
+                    add_sch_t4_from.Text = "";
+                    add_sch_t4_to.Text = "";
+                    add_sch_i4.Text = "";
+
+
+
+                    SqlConnection con2 = new SqlConnection();
+                    con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                    con2.Open();
+                    SqlCommand command2 = new SqlCommand();
+                    command2.CommandType = CommandType.Text;
+                    command2.Connection = con2;
+                    command2.CommandText = "SELECT * FROM Material where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue;
+                    SqlDataReader reader2 = command2.ExecuteReader();
+                    while (reader2.Read())
+                    {
+
+                        ListItem listItem = new ListItem()
+                        {
+                            Value = reader2[1].ToString(),
+
+                            Text = reader2[1].ToString()
+                        };
+
+                        add_sch_m1.Items.Add(listItem);
+                        add_sch_m2.Items.Add(listItem);
+                        add_sch_m3.Items.Add(listItem);
+                        add_sch_m4.Items.Add(listItem);
+                    }
+                    reader2.Close();
+                    con2.Close();
+                }
             }
         }
     }

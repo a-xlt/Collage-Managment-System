@@ -349,35 +349,148 @@ WHERE  (dbo.Student.Deb=@debId) ">
 
                     <div class="input-group">
                         <span class="input-group-text  bg-dark-subtle text-primary">القسم</span>
-
-                        <asp:DropDownList ID="add_sch_deb" CssClass="form-select text-center" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="add_sch_deb" CssClass="form-select text-center" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged"></asp:DropDownList>
 
                         &nbsp;&nbsp;&nbsp;
+
                         <span class="input-group-text  bg-dark-subtle text-primary">المرحلة</span>
-                        <asp:DropDownList ID="add_sch_stage" CssClass="form-select text-center" runat="server">
+                        <asp:DropDownList ID="add_sch_stage" CssClass="form-select text-center" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" >
+                            <asp:ListItem Value="-1">اختر المرحلة </asp:ListItem>
                             <asp:ListItem Value="1">الاولى </asp:ListItem>
                             <asp:ListItem Value="2">الثانية</asp:ListItem>
                             <asp:ListItem Value="3"> الثالثة</asp:ListItem>
                             <asp:ListItem Value="4">الرابعة</asp:ListItem>
                         </asp:DropDownList>
 
-                    </div>
-                    <hr />
-                    <div class="input-group">
-                        <span class="input-group-text  bg-dark-subtle text-primary">المرحلة</span>
+                        &nbsp;&nbsp;&nbsp;
 
-                        <asp:DropDownList ID="add_sch_dayOrNight" CssClass="form-select" runat="server">
+                        <span class="input-group-text  bg-dark-subtle text-primary">نوع الدوام</span>
+                        <asp:DropDownList ID="add_sch_dayOrNight" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged"  >
+                            <asp:ListItem Value="-1">اختر نوع الدوام  </asp:ListItem>
                             <asp:ListItem Value="صباحي">صباحي </asp:ListItem>
                             <asp:ListItem Value="مسائي">مسائي</asp:ListItem>
                         </asp:DropDownList>
 
+                        &nbsp;&nbsp;&nbsp;
+
+                          <span class="input-group-text  bg-dark-subtle text-primary">نظام المحاضرات </span>
+                        <asp:DropDownList ID="add_sch_FourOrThree" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" >
+                            <asp:ListItem Value="-1">اختر النظام </asp:ListItem>
+                            <asp:ListItem Value="four">اربع محاضرات </asp:ListItem>
+                            <asp:ListItem Value="three">ثلاث محاضرات</asp:ListItem>
+                        </asp:DropDownList>
+
+                        
+                        &nbsp;&nbsp;&nbsp;
+
+                          <span class="input-group-text  bg-dark-subtle text-primary">اليوم </span>
+                        <asp:DropDownList ID="add_sch_day" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged" >
+                            <asp:ListItem Value="-1">اختر اليوم </asp:ListItem>
+                            <asp:ListItem Value="1">الأحد </asp:ListItem>
+                            <asp:ListItem Value="2">الإثنين </asp:ListItem>
+                            <asp:ListItem Value="3">الثلاثاء </asp:ListItem>
+                            <asp:ListItem Value="4">الأحد </asp:ListItem>
+                            <asp:ListItem Value="5">الأحد </asp:ListItem>
+                            <asp:ListItem Value="6">الأحد </asp:ListItem>
+                            <asp:ListItem Value="7">الأحد </asp:ListItem>
+                        </asp:DropDownList>
                     </div>
 
 
-                    <p>ملف الجدول</p>
-                    <div class="input-group">
-                        <asp:FileUpload ID="add_sch_file" accept="application/pdf" CssClass="form-control" runat="server" />
+                    <hr />
+
+                    <div runat="server" id="sch_1" class="mb-5" visible="false">
+                        <span class="input-group-text mb-2  bg-dark-subtle text-primary">المحاضرة الأولى </span>
+                        <div class="input-group">
+                            <br />
+                        <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
+                            <asp:TextBox ID="add_sch_t1_from" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                            
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
+                            <asp:TextBox ID="add_sch_t1_to" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                             
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
+                            <asp:DropDownList ID="add_sch_m1" runat="server" CssClass="form-select" ></asp:DropDownList>
+                        &nbsp;&nbsp;
+
+                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">ملاحضات اخرى  </span>
+                            <asp:TextBox ID="add_sch_i1" runat="server" CssClass="form-control" style="resize:none" rows="1" TextMode="MultiLine"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        </div>
                     </div>
+
+                    <div runat="server" id="sch_2" class="mb-5" visible="false">
+                        <span class="input-group-text mb-2  bg-dark-subtle text-primary">المحاضرة الثانية </span>
+                        <div class="input-group">
+                            <br />
+                        <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
+                            <asp:TextBox ID="add_sch_t2_from" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                            
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
+                            <asp:TextBox ID="add_sch_t2_to" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                             
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
+                            <asp:DropDownList ID="add_sch_m2" runat="server" CssClass="form-select" ></asp:DropDownList>
+                        &nbsp;&nbsp;
+
+                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">ملاحضات اخرى  </span>
+                            <asp:TextBox ID="add_sch_i2" runat="server" CssClass="form-control" style="resize:none" rows="1" TextMode="MultiLine"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        </div>
+                    </div>
+
+                    <div runat="server" id="sch_3" class="mb-5" visible="false">
+                        <span class="input-group-text mb-2  bg-dark-subtle text-primary">المحاضرة الثالثة </span>
+                        <div class="input-group">
+                            <br />
+                        <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
+                            <asp:TextBox ID="add_sch_t3_from" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                            
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
+                            <asp:TextBox ID="add_sch_t3_to" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                             
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
+                            <asp:DropDownList ID="add_sch_m3" runat="server" CssClass="form-select" ></asp:DropDownList>
+                        &nbsp;&nbsp;
+
+                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">ملاحضات اخرى  </span>
+                            <asp:TextBox ID="add_sch_i3" runat="server" CssClass="form-control" style="resize:none" rows="1" TextMode="MultiLine"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        </div>
+                    </div>
+
+                    <div runat="server" id="sch_4" class="mb-5" visible="false">
+                        <span class="input-group-text mb-2  bg-dark-subtle text-primary">المحاضرة الرابعة </span>
+                        <div class="input-group">
+                            <br />
+                        <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
+                            <asp:TextBox ID="add_sch_t4_from" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                            
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
+                            <asp:TextBox ID="add_sch_t4_to" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+                        &nbsp;&nbsp;
+                             
+                            <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
+                            <asp:DropDownList ID="add_sch_m4" runat="server" CssClass="form-select" ></asp:DropDownList>
+                        &nbsp;&nbsp;
+
+                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">ملاحضات اخرى  </span>
+                            <asp:TextBox ID="add_sch_i4" runat="server" CssClass="form-control" style="resize:none" rows="1" TextMode="MultiLine"></asp:TextBox>
+                        &nbsp;&nbsp;
+
+                        </div>
+                    </div>
+
 
                     <hr />
 
