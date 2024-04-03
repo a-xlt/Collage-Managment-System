@@ -334,11 +334,12 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "INSERT INTO Schedule Values("+add_sch_stage.SelectedValue+" , "+add_sch_deb.SelectedValue+
-                " , '"+add_sch_dayOrNight.SelectedValue+"' , "+add_sch_day.SelectedValue+" , '"+add_sch_FourOrThree.SelectedValue+
-                "' , '"+add_sch_t1_from.Text+"' , '"+add_sch_t1_to.Text+"' , '"+add_sch_m1.Text+"' , '"+add_sch_i1.Text+"' , '"+add_sch_t2_from.Text+
-                "' , '"+add_sch_t2_to.Text+"' , '"+add_sch_m2.Text+"' , '"+add_sch_i2.Text+"' , '"+add_sch_t3_from.Text+"' ,' "+add_sch_t3_to.Text+
-                "' , '"+add_sch_m3.Text+"' , '"+add_sch_i3.Text+"' ,'"+add_sch_t4_from.Text+"' ,' "+add_sch_t4_to.Text+"' ,' "+add_sch_m4.Text+"' , '"+add_sch_i4.Text+"' )";
+            command.CommandText = "INSERT INTO Schedule Values(" + add_sch_stage.SelectedValue + " , " + add_sch_deb.SelectedValue +
+                " , '" + add_sch_dayOrNight.SelectedValue + "' , " + add_sch_day.SelectedValue + " , '" + add_sch_FourOrThree.SelectedValue +
+                "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedValue + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
+                "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedValue + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
+                "' , '" + add_sch_m3.SelectedValue + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedValue +
+                "' , '" + add_sch_i4.Text + "' )";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
@@ -640,6 +641,11 @@ namespace Collage_Managment_System
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
+                    add_sch_m1.Items.Clear();
+                    add_sch_m2.Items.Clear();
+                    add_sch_m3.Items.Clear();
+                    add_sch_m4.Items.Clear();
+
                     if (add_sch_FourOrThree.SelectedValue == "three")
                     {
                         sch_1.Visible = true;
@@ -689,20 +695,49 @@ namespace Collage_Managment_System
                         add_sch_m3.Text = reader[16].ToString();
                         add_sch_i3.Text = reader[17].ToString();
 
-                        add_sch_t4_from.Text =reader[18].ToString();
-                        add_sch_t4_to.Text =reader[19].ToString();
-                        add_sch_m4.Text =reader[20].ToString();
-                        add_sch_i4.Text =reader[21].ToString();
+                        add_sch_t4_from.Text = reader[18].ToString();
+                        add_sch_t4_to.Text = reader[19].ToString();
+                        add_sch_m4.Text = reader[20].ToString();
+                        add_sch_i4.Text = reader[21].ToString();
                     }
 
+                    reader.Close();
+                    con.Close();
 
+                    SqlConnection con2 = new SqlConnection();
+                    con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                    con2.Open();
+                    SqlCommand command2 = new SqlCommand();
+                    command2.CommandType = CommandType.Text;
+                    command2.Connection = con2;
+                    command2.CommandText = "SELECT * FROM Material where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue;
+                    SqlDataReader reader2 = command2.ExecuteReader();
+                    while (reader2.Read())
+                    {
 
+                        ListItem listItem = new ListItem()
+                        {
+                            Value = reader2[1].ToString(),
 
+                            Text = reader2[1].ToString()
+                        };
 
+                        add_sch_m1.Items.Add(listItem);
+                        add_sch_m2.Items.Add(listItem);
+                        add_sch_m3.Items.Add(listItem);
+                        add_sch_m4.Items.Add(listItem);
+                    }
+                    reader2.Close();
+                    con2.Close();
 
                 }
                 else
                 {
+                    add_sch_m1.Items.Clear();
+                    add_sch_m2.Items.Clear();
+                    add_sch_m3.Items.Clear();
+                    add_sch_m4.Items.Clear();
+
                     if (add_sch_FourOrThree.SelectedValue == "three")
                     {
                         sch_1.Visible = true;
@@ -726,24 +761,47 @@ namespace Collage_Managment_System
                     }
                     add_sch_t1_from.Text = "";
                     add_sch_t1_to.Text = "";
-                    add_sch_m1.Text = "";
                     add_sch_i1.Text = "";
 
                     add_sch_t2_from.Text = "";
                     add_sch_t2_to.Text = "";
-                    add_sch_m2.Text = "";
                     add_sch_i2.Text = "";
 
                     add_sch_t3_from.Text = "";
                     add_sch_t3_to.Text = "";
-                    add_sch_m3.Text = "";
                     add_sch_i3.Text = "";
 
                     add_sch_t4_from.Text = "";
                     add_sch_t4_to.Text = "";
-                    add_sch_m4.Text = "";
                     add_sch_i4.Text = "";
 
+
+
+                    SqlConnection con2 = new SqlConnection();
+                    con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                    con2.Open();
+                    SqlCommand command2 = new SqlCommand();
+                    command2.CommandType = CommandType.Text;
+                    command2.Connection = con2;
+                    command2.CommandText = "SELECT * FROM Material where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue;
+                    SqlDataReader reader2 = command2.ExecuteReader();
+                    while (reader2.Read())
+                    {
+
+                        ListItem listItem = new ListItem()
+                        {
+                            Value = reader2[1].ToString(),
+
+                            Text = reader2[1].ToString()
+                        };
+
+                        add_sch_m1.Items.Add(listItem);
+                        add_sch_m2.Items.Add(listItem);
+                        add_sch_m3.Items.Add(listItem);
+                        add_sch_m4.Items.Add(listItem);
+                    }
+                    reader2.Close();
+                    con2.Close();
                 }
             }
         }
