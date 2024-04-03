@@ -128,17 +128,18 @@ namespace Collage_Managment_System
             SqlCommand command2 = new SqlCommand();
             command2.CommandType = CommandType.Text;
             command2.Connection = con;
-            command2.CommandText = "select Id from Student";
+            command2.CommandText = "select Id from Student order by Id desc";
             SqlDataReader sqlDataReader = command2.ExecuteReader();
-            int id_str;
+            int id_str=0;
             if (sqlDataReader.Read())
-                id_str = Convert.ToInt32(sqlDataReader[0]);
+            { id_str = Convert.ToInt32(sqlDataReader["Id"].ToString()); }
 
-            else
-                id_str = 0;
+            
+
             sqlDataReader.Close();
 
             id_str += 1;
+
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
