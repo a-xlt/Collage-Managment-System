@@ -397,8 +397,6 @@ WHERE  (dbo.Student.Deb=@debId) ">
                     </div>
 
 
-
-
                     <hr />
 
                     <div runat="server" id="sch_1" class="mb-5" visible="false">
@@ -492,12 +490,6 @@ WHERE  (dbo.Student.Deb=@debId) ">
 
                         </div>
                     </div>
-
-
-
-
-
-
 
 
                     <hr />

@@ -328,16 +328,17 @@ namespace Collage_Managment_System
 
         protected void add_sch_save_Click(object sender, EventArgs e)
         {
-
-
-
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             con.Open();
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            //command.CommandText = "INSERT INTO Schedule Values("+ add_sch_stage.SelectedValue+ " , "+ add_sch_deb.SelectedValue+ " , N'"+guid.ToString()+".pdf' , N'"+ add_sch_dayOrNight.SelectedValue+ "')";
+            command.CommandText = "INSERT INTO Schedule Values("+add_sch_stage.SelectedValue+" , "+add_sch_deb.SelectedValue+
+                " , '"+add_sch_dayOrNight.SelectedValue+"' , "+add_sch_day.SelectedValue+" , '"+add_sch_FourOrThree.SelectedValue+
+                "' , '"+add_sch_t1_from.Text+"' , '"+add_sch_t1_to.Text+"' , '"+add_sch_m1.Text+"' , '"+add_sch_i1.Text+"' , '"+add_sch_t2_from.Text+
+                "' , '"+add_sch_t2_to.Text+"' , '"+add_sch_m2.Text+"' , '"+add_sch_i2.Text+"' , '"+add_sch_t3_from.Text+"' ,' "+add_sch_t3_to.Text+
+                "' , '"+add_sch_m3.Text+"' , '"+add_sch_i3.Text+"' ,'"+add_sch_t4_from.Text+"' ,' "+add_sch_t4_to.Text+"' ,' "+add_sch_m4.Text+"' , '"+add_sch_i4.Text+"' )";
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
