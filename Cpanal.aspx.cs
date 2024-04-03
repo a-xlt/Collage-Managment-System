@@ -537,15 +537,15 @@ namespace Collage_Managment_System
             int x = command.ExecuteNonQuery();
             if (x > 0)
             {
-                add_grade_error.Visible = true;
-                add_grade_error.Text = "تم اضافة كروب  ";
-                add_grade_error.CssClass = "alert alert-success ";
+                add_grp_error.Visible = true;
+                add_grp_error.Text = "تم اضافة كروب  ";
+                add_grp_error.CssClass = "alert alert-success ";
             }
             else
             {
-                add_grade_error.Visible = true;
-                add_grade_error.Text = "حدث خطأ";
-                add_grade_error.CssClass = "alert alert-danger ";
+                add_grp_error.Visible = true;
+                add_grp_error.Text = "حدث خطأ";
+                add_grp_error.CssClass = "alert alert-danger ";
             }
         }
 
