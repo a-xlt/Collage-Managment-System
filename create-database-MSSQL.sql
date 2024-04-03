@@ -66,22 +66,22 @@ DebID Int FOREIGN KEY REFERENCES Department(Id),
 
 t1From nvarchar(max) null ,
 t1To nvarchar(max) null,
-m1 int null FOREIGN KEY REFERENCES Material(Id),
+m1 nvarchar(max) null,
 i1 nvarchar(max) null,
 
 t2From nvarchar(max) null ,
 t2To nvarchar(max) null,
-m2 int null FOREIGN KEY REFERENCES Material(Id),
+m2 nvarchar(max) null,
 i2 nvarchar(max) null,
 
 t3From nvarchar(max) null ,
 t3To nvarchar(max) null,
-m3 int null FOREIGN KEY REFERENCES Material(Id),
+m3 nvarchar(max) null,
 i3 nvarchar(max) null,
 
 t4From nvarchar(max) null ,
 t4To nvarchar(max) null,
-m4 int null FOREIGN KEY REFERENCES Material(Id),
+m4 nvarchar(max) null,
 i4 nvarchar(max) null
 ) 
 
