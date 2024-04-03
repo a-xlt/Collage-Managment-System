@@ -512,36 +512,14 @@ namespace Collage_Managment_System
 
         protected void show_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-            con.Open();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.Connection = con;
-            command.CommandText = "SELECT Path FROM Schedule where DebID = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue + " AND DayOrNight = '" + show_sch_dayOrNight.SelectedValue + "'";
-            SqlDataReader reader = command.ExecuteReader();
+            
 
-            if (reader.Read())
-            {
-                show_sch_file.Src = "/lib/uploaded/" + reader[0].ToString();
-            }
-            else
-                show_sch_file.Src = "";
-
-            reader.Close();
         }
 
         protected void show_sch_delBTN_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-            con.Open();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.Connection = con;
-            command.CommandText = "delete FROM Schedule where DebID = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue + " AND DayOrNight = '" + show_sch_dayOrNight.SelectedValue + "'";
-            command.ExecuteNonQuery();
-            show_sch_file.Src = "";
+           
+
 
         }
 
@@ -637,7 +615,7 @@ namespace Collage_Managment_System
                 SqlCommand command = new SqlCommand();
                 command.CommandType = CommandType.Text;
                 command.Connection = con;
-                command.CommandText = "SELECT * FROM Schedule where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue + " AND Day = " + add_sch_day.SelectedValue + " AND FourOrThree = '" + add_sch_dayOrNight.SelectedValue + "' ";
+                command.CommandText = "SELECT * FROM Schedule where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue + " AND Day = " + add_sch_day.SelectedValue + " AND FourOrThree = '" + add_sch_FourOrThree.SelectedValue + "' ";
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
