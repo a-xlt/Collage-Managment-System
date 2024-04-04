@@ -130,11 +130,11 @@ namespace Collage_Managment_System
             command2.Connection = con;
             command2.CommandText = "select Id from Student order by Id desc";
             SqlDataReader sqlDataReader = command2.ExecuteReader();
-            int id_str=0;
+            int id_str = 0;
             if (sqlDataReader.Read())
             { id_str = Convert.ToInt32(sqlDataReader["Id"].ToString()); }
 
-            
+
 
             sqlDataReader.Close();
 
@@ -329,30 +329,71 @@ namespace Collage_Managment_System
 
         protected void add_sch_save_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-            con.Open();
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            command.Connection = con;
-            command.CommandText = "INSERT INTO Schedule Values(" + add_sch_stage.SelectedValue + " , " + add_sch_deb.SelectedValue +
-                " , '" + add_sch_dayOrNight.SelectedValue + "' , " + add_sch_day.SelectedValue + " , '" + add_sch_FourOrThree.SelectedValue +
-                "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedValue + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
-                "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedValue + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
-                "' , '" + add_sch_m3.SelectedValue + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedValue +
-                "' , '" + add_sch_i4.Text + "' )";
-            int x = command.ExecuteNonQuery();
-            if (x > 0)
+            SqlConnection con2 = new SqlConnection();
+            con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con2.Open();
+            SqlCommand command2 = new SqlCommand();
+            command2.CommandType = CommandType.Text;
+            command2.Connection = con2;
+            command2.CommandText = "SELECT * FROM Schedule where Stage = " + add_sch_stage.SelectedValue +" AND DayOrNight = '"+ add_sch_dayOrNight.SelectedValue+ "' AND DebID = " + add_sch_deb.SelectedValue + " AND Day = " + add_sch_day.SelectedValue + " AND FourOrThree = '" + add_sch_FourOrThree.SelectedValue + "' "; ;
+            SqlDataReader reader2 = command2.ExecuteReader();
+
+
+            if (!reader2.Read())
             {
-                add_sch_error.Visible = true;
-                add_sch_error.Text = "تم اضافة جدول جديد : ";
-                add_sch_error.CssClass = "alert alert-success ";
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "INSERT INTO Schedule Values(" + add_sch_stage.SelectedValue + " , " + add_sch_deb.SelectedValue +
+                    " , '" + add_sch_dayOrNight.SelectedValue + "' , " + add_sch_day.SelectedValue + " , '" + add_sch_FourOrThree.SelectedValue +
+                    "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedValue + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
+                    "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedValue + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
+                    "' , '" + add_sch_m3.SelectedValue + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedValue +
+                    "' , '" + add_sch_i4.Text + "' )";
+                int x = command.ExecuteNonQuery();
+                if (x > 0)
+                {
+                    add_sch_error.Visible = true;
+                    add_sch_error.Text = "تم اضافة جدول جديد  ";
+                    add_sch_error.CssClass = "alert alert-success ";
+                }
+                else
+                {
+                    add_sch_error.Visible = true;
+                    add_sch_error.Text = "حدث خطأ";
+                    add_sch_error.CssClass = "alert alert-danger ";
+                }
             }
             else
             {
-                add_sch_error.Visible = true;
-                add_sch_error.Text = "حدث خطأ";
-                add_sch_error.CssClass = "alert alert-danger ";
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+                con.Open();
+                SqlCommand command = new SqlCommand();
+                command.CommandType = CommandType.Text;
+                command.Connection = con;
+                command.CommandText = "delete from Schedule where Id = " + reader2[0].ToString() + ";INSERT INTO Schedule Values(" + add_sch_stage.SelectedValue + " , " + add_sch_deb.SelectedValue +
+                    " , '" + add_sch_dayOrNight.SelectedValue + "' , " + add_sch_day.SelectedValue + " , '" + add_sch_FourOrThree.SelectedValue +
+                    "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedValue + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
+                    "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedValue + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
+                    "' , '" + add_sch_m3.SelectedValue + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedValue +
+                    "' , '" + add_sch_i4.Text + "' )";
+                int x = command.ExecuteNonQuery();
+                if (x > 0)
+                {
+                    add_sch_error.Visible = true;
+                    add_sch_error.Text = "تم اضافة جدول جديد  ";
+                    add_sch_error.CssClass = "alert alert-success ";
+                }
+                else
+                {
+                    add_sch_error.Visible = true;
+                    add_sch_error.Text = "حدث خطأ";
+                    add_sch_error.CssClass = "alert alert-danger ";
+                }
             }
         }
 
@@ -513,16 +554,11 @@ namespace Collage_Managment_System
 
         protected void show_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-
-        }
-
-        protected void show_sch_delBTN_Click(object sender, EventArgs e)
-        {
-           
 
 
         }
+
+      
 
         protected void add_grp_save_Click(object sender, EventArgs e)
         {
@@ -608,181 +644,96 @@ namespace Collage_Managment_System
 
         protected void add_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (IsPostBack)
+
+            add_sch_m1.Items.Clear();
+            add_sch_m2.Items.Clear();
+            add_sch_m3.Items.Clear();
+            add_sch_m4.Items.Clear();
+
+            SqlConnection con3 = new SqlConnection();
+            con3.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con3.Open();
+            SqlCommand command3 = new SqlCommand();
+            command3.CommandType = CommandType.Text;
+            command3.Connection = con3;
+            command3.CommandText = "SELECT * FROM Material where Stage = " + add_sch_stage.SelectedValue +
+            "  AND DebID = " + add_sch_deb.SelectedValue;
+            SqlDataReader reader3 = command3.ExecuteReader();
+
+            ListItem listItem = new ListItem()
             {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                con.Open();
-                SqlCommand command = new SqlCommand();
-                command.CommandType = CommandType.Text;
-                command.Connection = con;
-                command.CommandText = "SELECT * FROM Schedule where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue + " AND Day = " + add_sch_day.SelectedValue + " AND FourOrThree = '" + add_sch_FourOrThree.SelectedValue + "' ";
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                Value = "0",
+                Text = "اختر مادة"
+            };
+
+            add_sch_m1.Items.Add(listItem);
+            add_sch_m2.Items.Add(listItem);
+            add_sch_m3.Items.Add(listItem);
+            add_sch_m4.Items.Add(listItem);
+
+            while (reader3.Read())
+            {
+                listItem = new ListItem()
                 {
-                    add_sch_m1.Items.Clear();
-                    add_sch_m2.Items.Clear();
-                    add_sch_m3.Items.Clear();
-                    add_sch_m4.Items.Clear();
+                    Value = reader3[0].ToString(),
+                    Text = reader3[1].ToString()
+                };
 
-                    if (add_sch_FourOrThree.SelectedValue == "three")
-                    {
-                        sch_1.Visible = true;
-                        sch_2.Visible = true;
-                        sch_3.Visible = true;
-                        sch_4.Visible = false;
-
-                        add_sch_t1_from.Text = reader[6].ToString();
-                        add_sch_t1_to.Text = reader[7].ToString();
-                        add_sch_m1.Text = reader[8].ToString();
-                        add_sch_i1.Text = reader[9].ToString();
-
-                        add_sch_t2_from.Text = reader[10].ToString();
-                        add_sch_t2_to.Text = reader[11].ToString();
-                        add_sch_m2.Text = reader[12].ToString();
-                        add_sch_i2.Text = reader[13].ToString();
-
-                        add_sch_t3_from.Text = reader[14].ToString();
-                        add_sch_t3_to.Text = reader[15].ToString();
-                        add_sch_m3.Text = reader[16].ToString();
-                        add_sch_i3.Text = reader[17].ToString();
-
-                        add_sch_t4_from.Text = "";
-                        add_sch_t4_to.Text = "";
-                        add_sch_m4.Text = "";
-                        add_sch_i4.Text = "";
-                    }
-                    else if (add_sch_FourOrThree.SelectedValue == "four")
-                    {
-                        sch_1.Visible = true;
-                        sch_2.Visible = true;
-                        sch_3.Visible = true;
-                        sch_4.Visible = true;
-
-                        add_sch_t1_from.Text = reader[6].ToString();
-                        add_sch_t1_to.Text = reader[7].ToString();
-                        add_sch_m1.Text = reader[8].ToString();
-                        add_sch_i1.Text = reader[9].ToString();
-
-                        add_sch_t2_from.Text = reader[10].ToString();
-                        add_sch_t2_to.Text = reader[11].ToString();
-                        add_sch_m2.Text = reader[12].ToString();
-                        add_sch_i2.Text = reader[13].ToString();
-
-                        add_sch_t3_from.Text = reader[14].ToString();
-                        add_sch_t3_to.Text = reader[15].ToString();
-                        add_sch_m3.Text = reader[16].ToString();
-                        add_sch_i3.Text = reader[17].ToString();
-
-                        add_sch_t4_from.Text = reader[18].ToString();
-                        add_sch_t4_to.Text = reader[19].ToString();
-                        add_sch_m4.Text = reader[20].ToString();
-                        add_sch_i4.Text = reader[21].ToString();
-                    }
-
-                    reader.Close();
-                    con.Close();
-
-                    SqlConnection con2 = new SqlConnection();
-                    con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                    con2.Open();
-                    SqlCommand command2 = new SqlCommand();
-                    command2.CommandType = CommandType.Text;
-                    command2.Connection = con2;
-                    command2.CommandText = "SELECT * FROM Material where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue;
-                    SqlDataReader reader2 = command2.ExecuteReader();
-                    while (reader2.Read())
-                    {
-
-                        ListItem listItem = new ListItem()
-                        {
-                            Value = reader2[1].ToString(),
-
-                            Text = reader2[1].ToString()
-                        };
-
-                        add_sch_m1.Items.Add(listItem);
-                        add_sch_m2.Items.Add(listItem);
-                        add_sch_m3.Items.Add(listItem);
-                        add_sch_m4.Items.Add(listItem);
-                    }
-                    reader2.Close();
-                    con2.Close();
-
-                }
-                else
-                {
-                    add_sch_m1.Items.Clear();
-                    add_sch_m2.Items.Clear();
-                    add_sch_m3.Items.Clear();
-                    add_sch_m4.Items.Clear();
-
-                    if (add_sch_FourOrThree.SelectedValue == "three")
-                    {
-                        sch_1.Visible = true;
-                        sch_2.Visible = true;
-                        sch_3.Visible = true;
-                        sch_4.Visible = false;
-                    }
-                    else if (add_sch_FourOrThree.SelectedValue == "four")
-                    {
-                        sch_1.Visible = true;
-                        sch_2.Visible = true;
-                        sch_3.Visible = true;
-                        sch_4.Visible = true;
-                    }
-                    else if (add_sch_FourOrThree.SelectedValue == "-1")
-                    {
-                        sch_1.Visible = false;
-                        sch_2.Visible = false;
-                        sch_3.Visible = false;
-                        sch_4.Visible = false;
-                    }
-                    add_sch_t1_from.Text = "";
-                    add_sch_t1_to.Text = "";
-                    add_sch_i1.Text = "";
-
-                    add_sch_t2_from.Text = "";
-                    add_sch_t2_to.Text = "";
-                    add_sch_i2.Text = "";
-
-                    add_sch_t3_from.Text = "";
-                    add_sch_t3_to.Text = "";
-                    add_sch_i3.Text = "";
-
-                    add_sch_t4_from.Text = "";
-                    add_sch_t4_to.Text = "";
-                    add_sch_i4.Text = "";
-
-
-
-                    SqlConnection con2 = new SqlConnection();
-                    con2.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                    con2.Open();
-                    SqlCommand command2 = new SqlCommand();
-                    command2.CommandType = CommandType.Text;
-                    command2.Connection = con2;
-                    command2.CommandText = "SELECT * FROM Material where Stage = " + add_sch_stage.SelectedValue + "  AND DebID = " + add_sch_deb.SelectedValue;
-                    SqlDataReader reader2 = command2.ExecuteReader();
-                    while (reader2.Read())
-                    {
-
-                        ListItem listItem = new ListItem()
-                        {
-                            Value = reader2[1].ToString(),
-
-                            Text = reader2[1].ToString()
-                        };
-
-                        add_sch_m1.Items.Add(listItem);
-                        add_sch_m2.Items.Add(listItem);
-                        add_sch_m3.Items.Add(listItem);
-                        add_sch_m4.Items.Add(listItem);
-                    }
-                    reader2.Close();
-                    con2.Close();
-                }
+                add_sch_m1.Items.Add(listItem);
+                add_sch_m2.Items.Add(listItem);
+                add_sch_m3.Items.Add(listItem);
+                add_sch_m4.Items.Add(listItem);
             }
+            reader3.Close();
+            con3.Close();
+
+
+            if (add_sch_FourOrThree.SelectedValue == "Three")
+            {
+                sch_1.Visible = true;
+                sch_2.Visible = true;
+                sch_3.Visible = true;
+                sch_4.Visible = false;
+
+                add_sch_t1_from.Text ="08:30" ;
+                add_sch_t1_to.Text ="10:30";
+
+                add_sch_t2_from.Text ="10:30";
+                add_sch_t2_to.Text ="12:30";
+
+                add_sch_t3_from.Text ="12:30";
+                add_sch_t3_to.Text ="14:30";
+
+
+
+                add_sch_t4_from.Text = "";
+                add_sch_t4_to.Text = "";
+                add_sch_m4.Items.Clear();
+                add_sch_i4.Text = "";
+            }
+            else if (add_sch_FourOrThree.SelectedValue == "Four")
+            {
+                sch_1.Visible = true;
+                sch_2.Visible = true;
+                sch_3.Visible = true;
+                sch_4.Visible = true;
+
+                add_sch_t1_from.Text = "08:30";
+                add_sch_t1_to.Text = "10:00";
+
+                add_sch_t2_from.Text = "10:00";
+                add_sch_t2_to.Text = "11:30";
+
+                add_sch_t3_from.Text = "11:30";
+                add_sch_t3_to.Text = "13:00";
+
+
+
+                add_sch_t4_from.Text = "13:00";
+                add_sch_t4_to.Text = "14:30";
+            }
+
+
         }
     }
 }

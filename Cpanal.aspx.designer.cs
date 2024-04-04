@@ -501,15 +501,6 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList add_sch_dayOrNight;
 
         /// <summary>
-        /// add_sch_FourOrThree control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList add_sch_FourOrThree;
-
-        /// <summary>
         /// add_sch_day control.
         /// </summary>
         /// <remarks>
@@ -517,6 +508,15 @@ namespace Collage_Managment_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList add_sch_day;
+
+        /// <summary>
+        /// add_sch_FourOrThree control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList add_sch_FourOrThree;
 
         /// <summary>
         /// sch_1 control.
@@ -744,22 +744,13 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList show_sch_dayOrNight;
 
         /// <summary>
-        /// show_sch_delBTN control.
+        /// show_sch1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button show_sch_delBTN;
-
-        /// <summary>
-        /// show_sch_file control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlIframe show_sch_file;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl show_sch1;
 
         /// <summary>
         /// function11 control.
