@@ -523,107 +523,205 @@ WHERE  (dbo.Student.Deb=@debId) ">
                         </asp:DropDownList>
                     </div>
                     <hr />
-                
+
 
                     <div class="container-fliud w-100 mt-3 mb-3 justify-content-center d-flex ">
 
 
 
 
-                        <table class="table table-bordered bg-black table-light" >
-                           <%--------------------------------------------------------------%>
+                        <table class="table table-bordered bg-black table-light">
+                            <%--------------------------------------------------------------%>
 
                             <tr valign="middle" align="center" class="table-active">
                                 <td rowspan="2">السبت</td>
-                                <td>8:30</td>
-                                <td>10:30</td>
-                                <td>12:30</td>
-                                <td>2:30</td>
+                                <td>
+                                    <asp:Label ID="Sat_time_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sat_time_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sat_time_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sat_time_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
                             <tr valign="middle" align="center" class="table-active">
 
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
+                                <td>
+                                    <asp:Label ID="Sat_info_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sat_info_2" runat="server" Text=""></asp:Label>
+
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sat_info_3" runat="server" Text=""></asp:Label>
+
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sat_info_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
-                           <%--------------------------------------------------------------%>
-                           
+                            <%--------------------------------------------------------------%>
+
                             <tr valign="middle" align="center" class="table-danger">
-                                <td rowspan="2" >الأحد</td>
-                                <td>8:30</td>
-                                <td>10:30</td>
-                                <td>12:30</td>
-                                <td>2:30</td>
+                                <td rowspan="2">الأحد</td>
+                                <td>
+                                    <asp:Label ID="Sun_time_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sun_time_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sun_time_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sun_time_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
-                            <tr valign="middle" align="center"  class="table-danger">
-
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                            </tr>
-                           <%--------------------------------------------------------------%>
-                           
-                            <tr valign="middle" align="center" class="table-active">
-                                <td rowspan="2" >الإثنين</td>
-                                <td>8:30</td>
-                                <td>10:30</td>
-                                <td>12:30</td>
-                                <td>2:30</td>
-                            </tr>
-                            <tr valign="middle" align="center" class="table-active">
-
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                            </tr>
-                           <%--------------------------------------------------------------%>
                             <tr valign="middle" align="center" class="table-danger">
-                                <td rowspan="2" >الثلاثاء</td>
-                                <td>8:30</td>
-                                <td>10:30</td>
-                                <td>12:30</td>
-                                <td>2:30</td>
-                            </tr>
-                            <tr valign="middle" align="center"  class="table-danger">
 
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
+                                <td>
+                                    <asp:Label ID="Sun_info_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sun_info_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sun_info_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Sun_info_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
-                           <%--------------------------------------------------------------%>
-                           
-                            <tr valign="middle" align="center"  class="table-active">
-                                <td rowspan="2" >الأربعاء</td>
-                                <td>8:30</td>
-                                <td>10:30</td>
-                                <td>12:30</td>
-                                <td>2:30</td>
+                            <%--------------------------------------------------------------%>
+
+                            <tr valign="middle" align="center" class="table-active">
+                                <td rowspan="2">الإثنين</td>
+                                <td>
+                                    <asp:Label ID="Mon_time_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Mon_time_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Mon_time_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Mon_time_4" runat="server" Text=""></asp:Label>
+                                </td>
+                            </tr>
+                            <tr valign="middle" align="center" class="table-active">
+
+                                <td>
+                                    <asp:Label ID="Mon_info_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Mon_info_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Mon_info_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Mon_info_4" runat="server" Text=""></asp:Label>
+                                </td>
+                            </tr>
+                            <%--------------------------------------------------------------%>
+                            <tr valign="middle" align="center" class="table-danger">
+                                <td rowspan="2">الثلاثاء</td>
+                                <td>
+                                    <asp:Label ID="Thr_time_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thr_time_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thr_time_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thr_time_4" runat="server" Text=""></asp:Label>
+                                </td>
+                            </tr>
+                            <tr valign="middle" align="center" class="table-danger">
+
+                                <td>
+                                    <asp:Label ID="Thr_info_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thr_info_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thr_info_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thr_info_4" runat="server" Text=""></asp:Label>
+                                </td>
+                            </tr>
+                            <%--------------------------------------------------------------%>
+
+                            <tr valign="middle" align="center" class="table-active">
+                                <td rowspan="2">الأربعاء</td>
+                                <td>
+                                    <asp:Label ID="Wed_time_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Wed_time_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Wed_time_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Wed_time_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
                             <tr valign="middle" align="center" class="table-active ">
 
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
+                                <td>
+                                    <asp:Label ID="Wed_info_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Wed_info_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Wed_info_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Wed_info_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
-                           <%--------------------------------------------------------------%>
-                             <tr valign="middle" align="center" class="table-danger">
+                            <%--------------------------------------------------------------%>
+                            <tr valign="middle" align="center" class="table-danger">
                                 <td rowspan="2">الخميس</td>
-                                <td>8:30</td>
-                                <td>10:30</td>
-                                <td>12:30</td>
-                                <td>2:30</td>
+                                <td>
+                                    <asp:Label ID="Thu_time_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thu_time_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thu_time_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thu_time_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
-                            <tr valign="middle" align="center"  class="table-danger">
+                            <tr valign="middle" align="center" class="table-danger">
 
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
-                                <td>a</td>
+                                <td>
+                                    <asp:Label ID="Thu_info_1" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thu_info_2" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thu_info_3" runat="server" Text=""></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="Thu_info_4" runat="server" Text=""></asp:Label>
+                                </td>
                             </tr>
                         </table>
 
