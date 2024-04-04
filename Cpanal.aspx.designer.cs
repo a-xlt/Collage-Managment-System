@@ -744,15 +744,6 @@ namespace Collage_Managment_System
         protected global::System.Web.UI.WebControls.DropDownList show_sch_dayOrNight;
 
         /// <summary>
-        /// show_sch1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl show_sch1;
-
-        /// <summary>
         /// function11 control.
         /// </summary>
         /// <remarks>

@@ -350,7 +350,6 @@ WHERE  (dbo.Student.Deb=@debId) ">
                     <div class="input-group">
                         <span class="input-group-text  bg-dark-subtle text-primary">القسم</span>
                         <asp:DropDownList ID="add_sch_deb" CssClass="form-select text-center" runat="server" AutoPostBack="true" OnSelectedIndexChanged="add_sch_deb_SelectedIndexChanged">
-
                         </asp:DropDownList>
 
                         &nbsp;&nbsp;&nbsp;
@@ -403,11 +402,11 @@ WHERE  (dbo.Student.Deb=@debId) ">
                         <div class="input-group">
                             <br />
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
-                            <asp:TextBox ID="add_sch_t1_from" runat="server" TextMode="Time" CssClass="form-control" readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t1_from" runat="server" TextMode="Time" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                             
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
-                            <asp:TextBox ID="add_sch_t1_to" runat="server" TextMode="Time" CssClass="form-control" readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t1_to" runat="server" TextMode="Time" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                              
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
@@ -426,11 +425,11 @@ WHERE  (dbo.Student.Deb=@debId) ">
                         <div class="input-group">
                             <br />
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
-                            <asp:TextBox ID="add_sch_t2_from" runat="server" TextMode="Time" CssClass="form-control" readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t2_from" runat="server" TextMode="Time" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                             
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
-                            <asp:TextBox ID="add_sch_t2_to" runat="server" TextMode="Time" CssClass="form-control" readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t2_to" runat="server" TextMode="Time" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                              
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
@@ -449,11 +448,11 @@ WHERE  (dbo.Student.Deb=@debId) ">
                         <div class="input-group">
                             <br />
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
-                            <asp:TextBox ID="add_sch_t3_from" runat="server" TextMode="Time" CssClass="form-control" readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t3_from" runat="server" TextMode="Time" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                             
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
-                            <asp:TextBox ID="add_sch_t3_to" runat="server" TextMode="Time" CssClass="form-control" readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t3_to" runat="server" TextMode="Time" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                              
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
@@ -472,11 +471,11 @@ WHERE  (dbo.Student.Deb=@debId) ">
                         <div class="input-group">
                             <br />
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">من الساعة  </span>
-                            <asp:TextBox ID="add_sch_t4_from" runat="server" TextMode="Time" CssClass="form-control" readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t4_from" runat="server" TextMode="Time" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                             
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">الى الساعة  </span>
-                            <asp:TextBox ID="add_sch_t4_to" runat="server" TextMode="Time" CssClass="form-control " readonly="true"></asp:TextBox>
+                            <asp:TextBox ID="add_sch_t4_to" runat="server" TextMode="Time" CssClass="form-control " ReadOnly="true"></asp:TextBox>
                             &nbsp;&nbsp;
                              
                             <span class="input-group-text  bg-dark-subtle text-primary-emphasis">المادة  </span>
@@ -514,28 +513,119 @@ WHERE  (dbo.Student.Deb=@debId) ">
                             <asp:ListItem Value="3"> الثالثة</asp:ListItem>
                             <asp:ListItem Value="4">الرابعة</asp:ListItem>
                         </asp:DropDownList>
+                        &nbsp;&nbsp;&nbsp;
 
-                    </div>
-                    <hr />
-                    <div class="input-group">
-                        <span class="input-group-text bg-dark-subtle text-primary">المرحلة</span>
+                         <span class="input-group-text bg-dark-subtle text-primary">الدراسة</span>
 
                         <asp:DropDownList ID="show_sch_dayOrNight" CssClass="form-select" runat="server" AutoPostBack="true" OnSelectedIndexChanged="show_sch_deb_SelectedIndexChanged">
                             <asp:ListItem Value="صباحي">صباحي </asp:ListItem>
                             <asp:ListItem Value="مسائي">مسائي</asp:ListItem>
                         </asp:DropDownList>
-
                     </div>
+                    <hr />
+                
 
                     <div class="container-fliud w-100 mt-3 mb-3 justify-content-center d-flex ">
 
-                        <div runat="server" id="show_sch1" visible="false" class="row">
-
-                        </div>
 
 
 
+                        <table class="table table-bordered bg-black table-light" >
+                           <%--------------------------------------------------------------%>
 
+                            <tr valign="middle" align="center" class="table-active">
+                                <td rowspan="2">السبت</td>
+                                <td>8:30</td>
+                                <td>10:30</td>
+                                <td>12:30</td>
+                                <td>2:30</td>
+                            </tr>
+                            <tr valign="middle" align="center" class="table-active">
+
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                           <%--------------------------------------------------------------%>
+                           
+                            <tr valign="middle" align="center" class="table-danger">
+                                <td rowspan="2" >الأحد</td>
+                                <td>8:30</td>
+                                <td>10:30</td>
+                                <td>12:30</td>
+                                <td>2:30</td>
+                            </tr>
+                            <tr valign="middle" align="center"  class="table-danger">
+
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                           <%--------------------------------------------------------------%>
+                           
+                            <tr valign="middle" align="center" class="table-active">
+                                <td rowspan="2" >الإثنين</td>
+                                <td>8:30</td>
+                                <td>10:30</td>
+                                <td>12:30</td>
+                                <td>2:30</td>
+                            </tr>
+                            <tr valign="middle" align="center" class="table-active">
+
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                           <%--------------------------------------------------------------%>
+                            <tr valign="middle" align="center" class="table-danger">
+                                <td rowspan="2" >الثلاثاء</td>
+                                <td>8:30</td>
+                                <td>10:30</td>
+                                <td>12:30</td>
+                                <td>2:30</td>
+                            </tr>
+                            <tr valign="middle" align="center"  class="table-danger">
+
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                           <%--------------------------------------------------------------%>
+                           
+                            <tr valign="middle" align="center"  class="table-active">
+                                <td rowspan="2" >الأربعاء</td>
+                                <td>8:30</td>
+                                <td>10:30</td>
+                                <td>12:30</td>
+                                <td>2:30</td>
+                            </tr>
+                            <tr valign="middle" align="center" class="table-active ">
+
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                           <%--------------------------------------------------------------%>
+                             <tr valign="middle" align="center" class="table-danger">
+                                <td rowspan="2">الخميس</td>
+                                <td>8:30</td>
+                                <td>10:30</td>
+                                <td>12:30</td>
+                                <td>2:30</td>
+                            </tr>
+                            <tr valign="middle" align="center"  class="table-danger">
+
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                                <td>a</td>
+                            </tr>
+                        </table>
 
 
                     </div>
