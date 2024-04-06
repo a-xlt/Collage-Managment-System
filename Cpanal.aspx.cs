@@ -349,9 +349,9 @@ namespace Collage_Managment_System
                 command.Connection = con;
                 command.CommandText = "INSERT INTO Schedule Values(" + add_sch_stage.SelectedValue + " , " + add_sch_deb.SelectedValue +
                     " , '" + add_sch_dayOrNight.SelectedValue + "' , " + add_sch_day.SelectedValue + " , '" + add_sch_FourOrThree.SelectedValue +
-                    "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedValue + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
-                    "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedValue + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
-                    "' , '" + add_sch_m3.SelectedValue + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedValue +
+                    "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedItem + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
+                    "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedItem + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
+                    "' , '" + add_sch_m3.SelectedItem + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedItem +
                     "' , '" + add_sch_i4.Text + "' )";
                 int x = command.ExecuteNonQuery();
                 if (x > 0)
@@ -377,9 +377,9 @@ namespace Collage_Managment_System
                 command.Connection = con;
                 command.CommandText = "delete from Schedule where Id = " + reader2[0].ToString() + ";INSERT INTO Schedule Values(" + add_sch_stage.SelectedValue + " , " + add_sch_deb.SelectedValue +
                     " , '" + add_sch_dayOrNight.SelectedValue + "' , " + add_sch_day.SelectedValue + " , '" + add_sch_FourOrThree.SelectedValue +
-                    "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedValue + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
-                    "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedValue + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
-                    "' , '" + add_sch_m3.SelectedValue + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedValue +
+                    "' , '" + add_sch_t1_from.Text + "' , '" + add_sch_t1_to.Text + "' , '" + add_sch_m1.SelectedItem + "' , '" + add_sch_i1.Text + "' , '" + add_sch_t2_from.Text +
+                    "' , '" + add_sch_t2_to.Text + "' , '" + add_sch_m2.SelectedItem + "' , '" + add_sch_i2.Text + "' , '" + add_sch_t3_from.Text + "' ,' " + add_sch_t3_to.Text +
+                    "' , '" + add_sch_m3.SelectedItem + "' , '" + add_sch_i3.Text + "' ,'" + add_sch_t4_from.Text + "' ,' " + add_sch_t4_to.Text + "' ,' " + add_sch_m4.SelectedItem +
                     "' , '" + add_sch_i4.Text + "' )";
                 int x = command.ExecuteNonQuery();
                 if (x > 0)
@@ -560,10 +560,431 @@ namespace Collage_Managment_System
             SqlCommand command = new SqlCommand();
             command.CommandType = CommandType.Text;
             command.Connection = con;
-            command.CommandText = "SELECT * FROM Schedule where DebId = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue +" AND DayOrNight";
+            command.CommandText = "SELECT * FROM Schedule where DebId = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue +" AND DayOrNight = '"+show_sch_dayOrNight.SelectedValue+"'";
             SqlDataReader reader = command.ExecuteReader();
 
 
+            if (reader.Read())
+            {
+                int Day = Convert.ToInt32(reader["Day"].ToString());
+                switch (Day)
+                {
+                    case 1:
+                        if (reader["FourOrThree"].ToString()== "Three")
+                        {
+                            Sun_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Sun_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Sun_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Sun_time_4.Text = "لا يوجد ";
+
+                            Sun_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Sun_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Sun_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Sun_info_4.Text = "لا يوجد ";
+                        }
+                        else
+                        {
+                            Sun_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Sun_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Sun_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Sun_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                            Sun_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Sun_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Sun_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Sun_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                        }
+
+
+                        break;
+                    case 2:
+                        if (reader["FourOrThree"].ToString() == "Three")
+                        {
+                            Mon_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Mon_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Mon_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Mon_time_4.Text = "لا يوجد ";
+
+                            Mon_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Mon_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Mon_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Mon_info_4.Text = "لا يوجد ";
+                        }
+                        else
+                        {
+                            Mon_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Mon_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Mon_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Mon_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                            Mon_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Mon_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Mon_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Mon_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                        }
+
+                        break;
+                    case 3:
+                        if (reader["FourOrThree"].ToString() == "Three")
+                        {
+                            Thr_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Thr_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Thr_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Thr_time_4.Text = "لا يوجد ";
+
+                            Thr_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Thr_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Thr_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Thr_info_4.Text = "لا يوجد ";
+                        }
+                        else
+                        {
+                            Thr_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Thr_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Thr_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Thr_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                            Thr_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Thr_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Thr_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Thr_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                        }
+
+
+
+                        break;
+                    case 4:
+                        if (reader["FourOrThree"].ToString() == "Three")
+                        {
+                            Wed_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Wed_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Wed_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Wed_time_4.Text = "لا يوجد ";
+
+                            Wed_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Wed_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Wed_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Wed_info_4.Text = "لا يوجد ";
+                        }
+                        else
+                        {
+                            Wed_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Wed_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Wed_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Wed_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                            Wed_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Wed_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Wed_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Wed_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                        }
+
+                        break;
+                    case 5:
+                        if (reader["FourOrThree"].ToString() == "Three")
+                        {
+                            Thu_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Thu_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Thu_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Thu_time_4.Text = "لا يوجد ";
+
+                            Thu_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Thu_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Thu_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Thu_info_4.Text = "لا يوجد ";
+                        }
+                        else
+                        {
+                            Thu_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Thu_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Thu_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Thu_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                            Thu_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Thu_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Thu_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Thu_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                        }
+
+                        break;
+                    case 6:
+                        if (reader["FourOrThree"].ToString() == "Three")
+                        {
+                            Sat_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Sat_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Sat_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Sat_time_4.Text = "لا يوجد ";
+
+                            Sat_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Sat_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Sat_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Sat_info_4.Text = "لا يوجد ";
+                        }
+                        else
+                        {
+                            Sat_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                            Sat_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                            Sat_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                            Sat_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                            Sat_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                            Sat_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                            Sat_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                            Sat_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                        }
+
+                        break;
+                   
+                    
+                }
+
+                while(reader.Read())
+                    {
+                     Day = Convert.ToInt32(reader["Day"].ToString());
+                    switch (Day)
+                    {
+                        case 1:
+                            if (reader["FourOrThree"].ToString() == "Three")
+                            {
+                                Sun_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Sun_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Sun_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Sun_time_4.Text = "لا يوجد ";
+
+                                Sun_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Sun_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Sun_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Sun_info_4.Text = "لا يوجد ";
+                            }
+                            else
+                            {
+                                Sun_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Sun_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Sun_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Sun_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                                Sun_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Sun_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Sun_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Sun_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                            }
+
+
+                            break;
+                        case 2:
+                            if (reader["FourOrThree"].ToString() == "Three")
+                            {
+                                Mon_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Mon_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Mon_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Mon_time_4.Text = "لا يوجد ";
+
+                                Mon_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Mon_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Mon_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Mon_info_4.Text = "لا يوجد ";
+                            }
+                            else
+                            {
+                                Mon_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Mon_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Mon_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Mon_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                                Mon_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Mon_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Mon_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Mon_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                            }
+
+                            break;
+                        case 3:
+                            if (reader["FourOrThree"].ToString() == "Three")
+                            {
+                                Thr_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Thr_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Thr_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Thr_time_4.Text = "لا يوجد ";
+
+                                Thr_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Thr_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Thr_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Thr_info_4.Text = "لا يوجد ";
+                            }
+                            else
+                            {
+                                Thr_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Thr_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Thr_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Thr_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                                Thr_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Thr_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Thr_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Thr_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                            }
+
+
+
+                            break;
+                        case 4:
+                            if (reader["FourOrThree"].ToString() == "Three")
+                            {
+                                Wed_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Wed_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Wed_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Wed_time_4.Text = "لا يوجد ";
+
+                                Wed_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Wed_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Wed_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Wed_info_4.Text = "لا يوجد ";
+                            }
+                            else
+                            {
+                                Wed_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Wed_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Wed_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Wed_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                                Wed_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Wed_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Wed_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Wed_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                            }
+
+                            break;
+                        case 5:
+                            if (reader["FourOrThree"].ToString() == "Three")
+                            {
+                                Thu_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Thu_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Thu_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Thu_time_4.Text = "لا يوجد ";
+
+                                Thu_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Thu_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Thu_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Thu_info_4.Text = "لا يوجد ";
+                            }
+                            else
+                            {
+                                Thu_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Thu_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Thu_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Thu_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                                Thu_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Thu_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Thu_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Thu_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                            }
+
+                            break;
+                        case 6:
+                            if (reader["FourOrThree"].ToString() == "Three")
+                            {
+                                Sat_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Sat_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Sat_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Sat_time_4.Text = "لا يوجد ";
+
+                                Sat_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Sat_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Sat_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Sat_info_4.Text = "لا يوجد ";
+                            }
+                            else
+                            {
+                                Sat_time_1.Text = reader["t1From"].ToString() + "-" + reader["t1To"].ToString();
+                                Sat_time_2.Text = reader["t2From"].ToString() + "-" + reader["t2To"].ToString();
+                                Sat_time_3.Text = reader["t3From"].ToString() + "-" + reader["t3To"].ToString();
+                                Sat_time_4.Text = reader["t4From"].ToString() + "-" + reader["t4To"].ToString();
+
+                                Sat_info_1.Text = reader["m1"].ToString() + "<br/>" + reader["i1"].ToString();
+                                Sat_info_2.Text = reader["m2"].ToString() + "<br/>" + reader["i2"].ToString();
+                                Sat_info_3.Text = reader["m3"].ToString() + "<br/>" + reader["i3"].ToString();
+                                Sat_info_4.Text = reader["m4"].ToString() + "<br/>" + reader["i4"].ToString();
+                            }
+
+                            break;
+
+
+                    }
+                }
+            }
+
+            else
+            {
+
+                        Sun_time_1.Text = "";
+                        Sun_time_2.Text = "";
+                        Sun_time_3.Text = "";
+                        Sun_time_4.Text = "";
+
+                        Sun_info_1.Text = "";
+                        Sun_info_2.Text = "";
+                        Sun_info_3.Text = "";
+                        Sun_info_4.Text = "";
+                   
+
+                        Mon_time_1.Text = "";
+                        Mon_time_2.Text = "";
+                        Mon_time_3.Text = "";
+                        Mon_time_4.Text = "";
+
+                        Mon_info_1.Text = "";
+                        Mon_info_2.Text = "";
+                        Mon_info_3.Text = "";
+                        Mon_info_4.Text = "";
+                  
+
+                        Thr_time_1.Text = "";
+                        Thr_time_2.Text = "";
+                        Thr_time_3.Text = "";
+                        Thr_time_4.Text = "";
+
+                        Thr_info_1.Text = "";
+                        Thr_info_2.Text = "";
+                        Thr_info_3.Text = "";
+                        Thr_info_4.Text = "";
+                    
+
+                   
+                        Wed_time_1.Text = "";
+                        Wed_time_2.Text = "";
+                        Wed_time_3.Text = "";
+                        Wed_time_4.Text = "";
+
+                        Wed_info_1.Text = "";
+                        Wed_info_2.Text = "";
+                        Wed_info_3.Text = "";
+                        Wed_info_4.Text = "";
+                   
+
+                        Thu_time_1.Text = "";
+                        Thu_time_2.Text = "";
+                        Thu_time_3.Text = "";
+                        Thu_time_4.Text = "";
+
+                        Thu_info_1.Text = "";
+                        Thu_info_2.Text = "";
+                        Thu_info_3.Text = "";
+                        Thu_info_4.Text = "";
+                    
+
+                        Sat_time_1.Text = "";
+                        Sat_time_2.Text = "";
+                        Sat_time_3.Text = "";
+                        Sat_time_4.Text = "";
+
+                        Sat_info_1.Text = "";
+                        Sat_info_2.Text = "";
+                        Sat_info_3.Text = "";
+                        Sat_info_4.Text = "";
+                   
+
+                }
         }
 
 
