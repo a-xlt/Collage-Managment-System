@@ -530,7 +530,7 @@ WHERE  (dbo.Student.Deb=@debId) ">
 
 
 
-                        <table class="table table-bordered bg-black table-light">
+                        <table class="table table-bordered bg-black table-light user-select-none">
                             <%--------------------------------------------------------------%>
 
                             <tr valign="middle" align="center" class="table-active">

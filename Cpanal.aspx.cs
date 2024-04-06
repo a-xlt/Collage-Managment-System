@@ -554,11 +554,19 @@ namespace Collage_Managment_System
 
         protected void show_sch_deb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            con.Open();
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.Text;
+            command.Connection = con;
+            command.CommandText = "SELECT * FROM Schedule where DebId = " + show_sch_deb.SelectedValue + " AND Stage = " + show_sch_stage.SelectedValue +" AND DayOrNight";
+            SqlDataReader reader = command.ExecuteReader();
 
 
         }
 
-      
+
 
         protected void add_grp_save_Click(object sender, EventArgs e)
         {
