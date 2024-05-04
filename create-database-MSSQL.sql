@@ -51,8 +51,8 @@ g3 float null default 0,
 absence float null default 0,
 pluses float null default 0,
 FinalGrade float null default 0,
-StuID int not null FOREIGN KEY REFERENCES Student(Id),
-MetID int not null FOREIGN KEY REFERENCES Material(Id),
+StuID int not null ,
+MetID int not null ,
 ) 
 
 create table Schedule(

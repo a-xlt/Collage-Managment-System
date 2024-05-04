@@ -213,9 +213,10 @@ namespace Collage_Managment_System
             command.CommandType = CommandType.Text;
             command.Connection = con;
             command.CommandText =
+                "delete from Schedule where  DebId=" + del_deb_ddl.SelectedValue +
                 ";delete from Material where DebId=" + del_deb_ddl.SelectedValue +
-                ";delete from Schedule where  DebId=" + del_deb_ddl.SelectedValue +
                 ";delete from Student where  Deb=" + del_deb_ddl.SelectedValue +
+                ";delete from Groups where  DebId=" + del_deb_ddl.SelectedValue +
                 ";delete FROM Department where id = " + del_deb_ddl.SelectedValue;
             int x = command.ExecuteNonQuery();
             if (x > 0)
